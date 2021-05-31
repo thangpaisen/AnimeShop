@@ -26,6 +26,7 @@ const NewProducts = () => {
                 renderItem={({item,index})=><Text>alo</Text>}
                 keyExtractor={(item) => item.id}
             />
+            <Text></Text>
         </View>
     )
 }
