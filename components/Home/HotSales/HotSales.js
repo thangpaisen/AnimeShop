@@ -5,8 +5,8 @@ import Product from '../NewProducts/Product'
 const data=[
     {
         id:1,
-        title:'Móc khóa mica anime Kimetsu no Yaiba',
-        image:'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
+        title:'Khẩu trang anime Tokyo Ghoul - Ken Kaneki (có dây kéo) ',
+        image:'https://product.hstatic.net/1000273792/product/86a_96bc805a3aa947c194691192b14cc13d_large.jpg',
         price:55000,
         sale:99,
         rate:5,
@@ -14,8 +14,8 @@ const data=[
     },
 {
         id:2,
-        title:'Móc khóa mica anime Kimetsu no Yaiba',
-        image:'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
+        title:'Dây chuyền anime Attack on Titan - Mẫu 3 ',
+        image:'https://product.hstatic.net/1000273792/product/z1_97735c4113e74912b3935225b9b2f6c9_large.jpg',
         price:59000,
         sale:99,
         rate:5,

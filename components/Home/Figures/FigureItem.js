@@ -45,7 +45,7 @@ const FigureItem = ({item}) => {
       <ImageBackground
         style={styles.image}
         source={{
-          uri: 'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
+          uri: item.image,
         }}
       >
         {item.sale !== 0 ? (
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     width: windowWidth - 20,
-    padding:20,
+    padding:10,
     borderWidth: 0.5,
     borderColor: '#ededed',
   },

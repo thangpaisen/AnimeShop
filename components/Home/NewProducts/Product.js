@@ -14,7 +14,7 @@ const Product = ({item}) => {
            <Image
                 style={styles.image}
                 source={{
-                uri: 'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
+                uri: item.image,
                 }} 
            />
            {item.sale!==0

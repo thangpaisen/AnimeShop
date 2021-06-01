@@ -5,41 +5,31 @@ import FigureItem from './FigureItem';
 const data = [
   {
     id: 1,
-    title: 'Móc khóa mica anime Kimetsu no Yaiba',
+    title: 'Mô hình Nendoroid 1262 - Senku Ishigami - anime Dr. Stone',
     image:
-      'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
-    price: 10000000,
-    sale: 69,
+      'https://product.hstatic.net/1000273792/product/47_81bbcad6c9e94ff8990202324575ff15_medium.jpg',
+    price: 350000,
+    sale: 12,
     rate: 5,
     sold: 999,
   },
   {
     id: 2,
-    title: 'Móc khóa mica anime Kimetsu no Yaiba',
+    title: 'Mô hình Nendoroid 1334 - Zenitsu Agatsuma - anime Kimetsu no Yaiba',
     image:
-      'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
-    price: 55000,
+      'https://product.hstatic.net/1000273792/product/f2_8e172c979bc84dd393fb55a809a2fc9f_medium.jpg',
+    price: 350000,
     sale: 12,
     rate: 5,
     sold: 69,
   },
   {
     id: 3,
-    title: 'Móc khóa mica anime Kimetsu no Yaiba',
+    title: 'Mô hình Tanjiro Kamado - anime Kimetsu no Yaiba',
     image:
-      'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
-    price: 55000,
+      'https://product.hstatic.net/1000273792/product/f1a_6c1bef31e889479787956dc7d6e53df3_medium.jpg',
+    price: 230000,
     sale: 0,
-    rate: 5,
-    sold: 69,
-  },
-  {
-    id: 4,
-    title: 'Móc khóa mica anime Kimetsu no Yaiba',
-    image:
-      'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
-    price: 55000,
-    sale: 99,
     rate: 5,
     sold: 69,
   },
