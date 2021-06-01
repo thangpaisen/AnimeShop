@@ -1,15 +1,47 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity,FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
+import Product from './Product'
 const data=[
     {
         id:1,
-        title:'thangquan1'
+        title:'Móc khóa mica anime Kimetsu no Yaiba',
+        image:'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
+        price:55000,
+        sale:0,
+        rate:5,
+        sold:69,
     },
-        {
+{
         id:2,
-        title:'thangquan2'
-    }
+        title:'Móc khóa mica anime Kimetsu no Yaiba',
+        image:'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
+        price:55000,
+        sale:0,
+        rate:5,
+        sold:69,
+
+    },
+       {
+        id:3,
+        title:'Móc khóa mica anime Kimetsu no Yaiba',
+        image:'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
+        price:55000,
+        sale:0,
+        rate:5,
+        sold:69,
+
+    },
+{
+        id:4,
+        title:'Móc khóa mica anime Kimetsu no Yaiba',
+        image:'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
+        price:55000,
+        sale:0,
+        rate:5,
+        sold:69,
+
+    },
 ]
 const NewProducts = () => {
     return (
@@ -22,11 +54,13 @@ const NewProducts = () => {
                 </TouchableOpacity>
             </View>
             <FlatList
+                horizontal
+                pagingEnabled
                 data={data}
-                renderItem={({item,index})=><Text>alo</Text>}
+                renderItem={({item,index})=><Product item={item}/>}
                 keyExtractor={(item) => item.id}
-            />
-            <Text></Text>
+                />
+            
         </View>
     )
 }
@@ -36,10 +70,11 @@ export default NewProducts
 const styles = StyleSheet.create({
     container:{
         marginTop:10,
-        padding:10,
+        padding:5,
         // backgroundColor:'red'
     },
     header:{
+        padding:5,
         flexDirection:'row',
         justifyContent: 'space-between',
         alignItems: 'center'
@@ -51,5 +86,5 @@ const styles = StyleSheet.create({
     showAll:{
         flexDirection:'row',
         alignItems: 'center'
-    }
+    },
 })
