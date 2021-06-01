@@ -1,17 +1,17 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Product from './Product';
+import FigureItem from './FigureItem';
 const data = [
   {
     id: 1,
     title: 'Móc khóa mica anime Kimetsu no Yaiba',
     image:
       'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
-    price: 55000,
+    price: 10000000,
     sale: 69,
     rate: 5,
-    sold: 69,
+    sold: 999,
   },
   {
     id: 2,
@@ -44,47 +44,58 @@ const data = [
     sold: 69,
   },
 ];
-const NewProducts = () => {
+const Figures = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>😍 HÀNG MỚI VỀ</Text>
+        <View style={styles.headerTitle}>
+          <Text style={{fontSize: 16, fontWeight: 'bold', color: 'white'}}>
+            😍 FIGURE - MÔ HÌNH
+          </Text>
+        </View>
         <TouchableOpacity style={styles.showAll}>
           <Text style={{fontSize: 16, fontWeight: 'bold'}}>All</Text>
           <Icon name="chevron-forward-outline" size={20} color="black" />
         </TouchableOpacity>
       </View>
-      <FlatList
-        horizontal
-        pagingEnabled
+      {/* <FlatList
         data={data}
-        renderItem={({item, index}) => <Product item={item} />}
+        renderItem={({item, index}) => <FigureItem item={item} />}
         keyExtractor={item => item.id}
-      />
+      /> */}
+      {
+        data.map((item, index) =><FigureItem key={index} item={item} />)
+      }
     </View>
   );
 };
 
-export default NewProducts;
+export default Figures;
 
 const styles = StyleSheet.create({
   container: {
     marginTop: 10,
-    padding: 5,
-    // backgroundColor:'red'
+    padding: 10,
+    alignItems: 'center',
+    // backgroundColor:'blue'
   },
   header: {
-    padding: 5,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    borderWidth: 0.5,
+    borderColor: '#ededed',
+    borderTopWidth:2,
+    borderTopColor: '#49d292',
   },
   headerTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    paddingVertical: 15,
+    backgroundColor: '#49d292',
+    paddingHorizontal: 10,
   },
   showAll: {
+    flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'flex-end',
+    // backgroundColor:'red',
   },
 });

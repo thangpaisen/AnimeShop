@@ -1,13 +1,17 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,ScrollView} from 'react-native'
 import Header from './Header'
 import NewProducts from './NewProducts/NewProducts.js'
+import HotSales from './HotSales/HotSales.js'
+import Figures from './Figures/Figures.js'
 const Home = () => {
     return (
-        <View>
+        <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
             <Header/>
             <NewProducts/>
-        </View>
+            <HotSales/>
+            <Figures/>
+        </ScrollView>
     )
 }
 
