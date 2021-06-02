@@ -10,40 +10,45 @@ const Product = ({item}) => {
     const currentPrice = Intl.NumberFormat().format(item.price - item.price *item.sale/100);
     const parentPrice = Intl.NumberFormat().format(item.price);
     return (
-        <View style={styles.container}>
-           <Image
-                style={styles.image}
-                source={{
-                uri: item.image,
-                }} 
-           />
-           {item.sale!==0
-           ?<ImageBackground
-                style={styles.iconSale}
-                source={{
-                uri: 'https://theme.hstatic.net/1000273792/1000446123/14/iconsale.png',
-                }}
-            >
+      <View style={styles.container}>
+        <Image
+          style={styles.image}
+          source={{
+            uri: item.image,
+          }}
+        />
+        {item.sale !== 0 ? (
+          <ImageBackground
+            style={styles.iconSale}
+            source={{
+              uri: 'https://theme.hstatic.net/1000273792/1000446123/14/iconsale.png',
+            }}>
             <Text style={styles.sale}>- {item.sale}%</Text>
-           </ImageBackground>
-           :null}
-            <Text numberOfLines={2} ellipsizeMode='tail' style={styles.title}>{item.title}</Text>
-           <View style={{flexDirection: 'row',alignItems: 'center',marginTop:5,}}>
-                <Text style={styles.ratting}>
-                    <Rating imageSize={16} readonly startingValue={5} style={styles.rating} />
-                </Text>
-                <Text style={styles.sold}>
-                        ({item.sold})
-                </Text>
-           </View>
-           <View style={styles.price}>
-                <Text style={styles.currentPrice}>{currentPrice} đ</Text>
-                 {item.sale!==0
-                 ?<Text style={styles.parentPrice}>{parentPrice} đ</Text>
-                 :null}
-           </View> 
+          </ImageBackground>
+        ) : null}
+        <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>
+          {item.title}
+        </Text>
+        <View
+          style={{flexDirection: 'row', alignItems: 'center', marginTop: 5}}>
+          <Text style={styles.ratting}>
+            <Rating
+              imageSize={16}
+              readonly
+              startingValue={5}
+              style={styles.rating}
+            />
+          </Text>
+          <Text style={styles.sold}>({item.sold})</Text>
         </View>
-    )
+        <View style={styles.price}>
+          <Text style={styles.currentPrice}>{currentPrice} đ</Text>
+          {item.sale !== 0 ? (
+            <Text style={styles.parentPrice}>{parentPrice} đ</Text>
+          ) : null}
+        </View>
+      </View>
+    );
 }
 
 export default Product
@@ -86,7 +91,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
         marginTop:10,
         paddingHorizontal:10,
-        fontSize:18,
+        fontSize:16,
     },
     price:{
         flexDirection:'row',

@@ -29,7 +29,7 @@ const SlideShow = () => {
     const onchange=(nativeEvent)=>{
         if(nativeEvent)
         {
-            const slide= Math.ceil(nativeEvent.contentOffset.x/nativeEvent.layoutMeasurement.width)
+            const slide= Math.floor(nativeEvent.contentOffset.x/nativeEvent.layoutMeasurement.width)
             //nativeEvent.contentOffset.x khỏag cách từ đầu scroll đến hình thứ 1,2,3... 
             //nativeEvent.layoutMeasurement.width chiều rộng của cái 
             if(slide!==imageActive)
@@ -48,15 +48,10 @@ const SlideShow = () => {
         ))}
       </ScrollView>
         <View  style={styles.pagination}>
-        {data.map((item, index) => (
-            <>
-                {
-                imageActive==index
-                ?<Text key={item} style={styles.dot}>⚫</Text>
-                :<Text key={item} style={styles.dot}>⚪</Text>
-                }
-            </>
-        ))}
+        {data.map((item, index) =>(
+               <Text key={index} style={imageActive==index?styles.dotActive:styles.dot}>●</Text>      
+        )
+        )}
         </View>
     </View>
   );
@@ -80,7 +75,13 @@ const styles = StyleSheet.create({
       alignSelf: 'center'
   },
   dot:{
-      fontSize:8,
+      fontSize:18,
       padding:2,
+      color:'#dae2e3'
+  },
+  dotActive:{
+    fontSize:18,
+      padding:2,
+      color:'black'
   }
 });

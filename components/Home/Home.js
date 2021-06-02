@@ -5,12 +5,14 @@ import NewProducts from './NewProducts/NewProducts.js'
 import HotSales from './HotSales/HotSales.js'
 import Figures from './Figures/Figures.js'
 import SlideShow from './SlideShow'
+import Categories from './Categories/Categories'
 
 const Home = () => {
     return (
         <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
             <Header/>
             <SlideShow/>
+            <Categories/>
             <NewProducts/>
             <HotSales/>
             <Figures/>

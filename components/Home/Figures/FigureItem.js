@@ -24,7 +24,8 @@ const FigureItem = ({item}) => {
         <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>
           {item.title}
         </Text>
-        <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 5}}>
+        <View
+          style={{flexDirection: 'row', alignItems: 'center', marginTop: 5}}>
           <Text style={styles.ratting}>
             <Rating
               imageSize={16}
@@ -46,19 +47,17 @@ const FigureItem = ({item}) => {
         style={styles.image}
         source={{
           uri: item.image,
-        }}
-      >
+        }}>
         {item.sale !== 0 ? (
-            <ImageBackground
+          <ImageBackground
             style={styles.iconSale}
             source={{
-                uri: 'https://theme.hstatic.net/1000273792/1000446123/14/iconsale.png',
+              uri: 'https://theme.hstatic.net/1000273792/1000446123/14/iconsale.png',
             }}>
             <Text style={styles.sale}>- {item.sale}%</Text>
-            </ImageBackground>
+          </ImageBackground>
         ) : null}
       </ImageBackground>
-      
     </View>
   );
 };
@@ -67,21 +66,21 @@ export default FigureItem;
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-const WIDTH_IMAGE = (windowWidth - 20)*0.4;
+const WIDTH_IMAGE = (windowWidth - 20) * 0.4;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     alignItems: 'center',
     flexDirection: 'row',
     width: windowWidth - 20,
-    padding:10,
+    padding: 10,
     borderWidth: 0.5,
     borderColor: '#ededed',
   },
-  description:{
-      flex:1,
-      alignItems: 'center',
-      marginRight:10,
+  description: {
+    flex: 1,
+    alignItems: 'center',
+    marginRight: 10,
   },
   image: {
     width: WIDTH_IMAGE,
@@ -103,24 +102,24 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     marginTop: 10,
-    fontSize: 18,
+    fontSize: 16,
   },
-    price: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 10,
-    },
-    currentPrice: {
-        padding: 5,
-        color: 'red',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    parentPrice: {
-        padding: 5,
-        color: '#999',
-        fontSize: 12,
-        textDecorationLine: 'line-through',
-        fontStyle: 'italic',
-    },
+  price: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  currentPrice: {
+    padding: 5,
+    color: 'red',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  parentPrice: {
+    padding: 5,
+    color: '#999',
+    fontSize: 12,
+    textDecorationLine: 'line-through',
+    fontStyle: 'italic',
+  },
 });
