@@ -36,7 +36,7 @@ const Product = ({item}) => {
               imageSize={16}
               readonly
               startingValue={5}
-              style={styles.rating}
+              style={styles.ratting}
             />
           </Text>
           <Text style={styles.sold}>({item.sold})</Text>
