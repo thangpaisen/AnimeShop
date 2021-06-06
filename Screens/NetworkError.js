@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red'
+    // backgroundColor: 'red',
+    height:windowHeight-52
   },
   errorText: {
     color: '#333',

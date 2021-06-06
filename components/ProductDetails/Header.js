@@ -15,11 +15,11 @@ export default function Header() {
 }
 const styles = StyleSheet.create({
     header: {
-    // position: 'absolute',
-    // top: 0,
-    // right: 0,
-    // left: 0,
-    // zIndex: 99999,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+    zIndex: 99999,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
