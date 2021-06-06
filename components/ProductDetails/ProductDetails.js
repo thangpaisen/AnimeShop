@@ -12,8 +12,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Header from './Header';
 import Description from './Description';
 import SelectSwatch from './SelectSwatch';
-
 import ListAction from './ListAction';
+import Details from './Details';
 export default function ProductDetails() {
   return (
     <>
@@ -26,18 +26,13 @@ export default function ProductDetails() {
               uri: 'https://product.hstatic.net/1000273792/product/z1_97735c4113e74912b3935225b9b2f6c9_large.jpg',
             }}
           />
-          <Description/>
-          <SelectSwatch/>
-          <View style={styles.details}>
-            <View style={styles.headerDetails}>
-              <Text style={styles.textHeaderDetails}>Chi tiết sản phẩm</Text>
-            </View>
-          </View>
-          
+          <Description />
+          <SelectSwatch />
+          <Details/>
         </View>
       </ScrollView>
-       <Header/>
-      {/* <ListAction/> */}
+      <Header />
+      <ListAction/>
     </>
   );
 }
@@ -45,10 +40,10 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: '#efefef',
   },
-  
+
   imageProduct: {
     width: windowWidth,
     height: windowWidth,
@@ -56,16 +51,5 @@ const styles = StyleSheet.create({
     // backgroundColor: 'green',
   },
 
- details:{
-   marginTop: 10,
-   paddingHorizontal: 10,
-   backgroundColor: 'white',
- },
- headerDetails:{
-
- },
- textHeaderDetails:{
-   paddingVertical:10,
-   fontSize:16,
- }
+  
 });

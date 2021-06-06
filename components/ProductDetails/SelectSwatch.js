@@ -11,7 +11,7 @@ export default function SelectSwatch() {
               <View style={styles.selectItem}>
                 <Text style={styles.textItem}>Lôi</Text>
               </View>
-              <View style={styles.selectItem}>
+              <View style={[styles.selectItem,styles.selectItemActive]}>
                 <Text style={styles.textItem}>Thủy</Text>
               </View>
               <View style={styles.selectItem}>
@@ -37,7 +37,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: 'white',
   },
-  headerSelect: {},
+  headerSelect: {
+
+  },
   textHeaderSelect: {
     fontSize: 16,
   },
@@ -49,9 +51,17 @@ const styles = StyleSheet.create({
   selectItem: {
     marginRight: 10,
     marginTop: 10,
-    padding: 10,
-    borderWidth: 1,
+    padding: 8,
+    borderWidth: 0.4,
     borderColor: '#999',
+    
+    borderRadius: 6,
+    elevation:1,
+    backgroundColor:'white'
+  },
+  selectItemActive:{
+    borderWidth: 2,
+    borderColor: 'red',
   },
   textItem: {
     fontSize: 16,

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: 'black',
-    margin: 10,
+    marginHorizontal: 10,
     padding: 10,
   },
   buyNow: {
