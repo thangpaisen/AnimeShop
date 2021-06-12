@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View,Dimensions,Pressable,Image } from 'react-native'
+import { StyleSheet, Text, View,Dimensions,Pressable,Image,TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
@@ -19,20 +19,23 @@ export default function CartItem({item}) {
           </Text>
           <Text style={styles.price}>{currentPrice} đ</Text>
           <View style={styles.quantity}>
-            <Pressable style={styles.quantityDecrease}>
+            <TouchableOpacity style={styles.quantityDecrease}>
               <Icon name="caret-back-circle-outline" size={24} color="black" />
-            </Pressable>
+            </TouchableOpacity>
             <Text style={styles.quantityNumber}>1</Text>
-            <Pressable style={styles.quantityIncrease}>
+            <TouchableOpacity style={styles.quantityIncrease}>
               <Icon
                 name="caret-forward-circle-outline"
                 size={24}
                 color="black"
               />
-            </Pressable>
+            </TouchableOpacity>
           </View>
         </View>
-        <Icon style={styles.deleteItem} name="trash" size={24} color="black" />
+        <TouchableOpacity style={styles.deleteItem}>
+            <Icon  name="trash" size={24} color="black" />
+        </TouchableOpacity>
+        
       </View>
     )
 }
@@ -45,7 +48,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 5,
     margin: 5,
-    elevation:3,
+    padding:10,
+    elevation:1,
   },
   image: {
     width: WIDTH_IMAGE,
@@ -76,7 +80,7 @@ const styles = StyleSheet.create({
   },
   deleteItem: {
     alignSelf: 'center',
-    padding: 10,
+    paddingLeft: 10,
     color: 'black',
   },
 })

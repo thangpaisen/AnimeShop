@@ -8,9 +8,10 @@ export default function Header() {
         <Icon name="arrow-back-outline" size={24} color="white" />
       </View>
       <View style={styles.headerCartTile}>
-        <Text style={styles.textHeaderCart}>Giỏ hàng</Text>
+        <Text style={styles.textHeaderCart}>Giỏ hàng (9)</Text>
       </View>
       <View style={[styles.back, {backgroundColor: 'transparent'}]}></View>
+      
     </View>
   );
 }
@@ -20,8 +21,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 10,
-    marginBottom: 20,
-    backgroundColor: 'transparent',
+    // marginBottom: 20,
+    backgroundColor: '#09bff2',
   },
   back: {
     width: 32,
@@ -34,6 +35,7 @@ const styles = StyleSheet.create({
   textHeaderCart: {
     marginLeft: 10,
     fontSize: 18,
-    color: 'black',
+    color: 'white',
+    fontWeight: 'bold',
   },
 });

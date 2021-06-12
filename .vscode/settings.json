@@ -9,5 +9,7 @@
         "siêu",
         "u",
         "xanh"
-    ]
+    ],
+    "autoimport.doubleQuotes": true,
+    "autoimport.showNotifications": true
 }

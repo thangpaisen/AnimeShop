@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Header from './Header';
 import CartItem from './CartItem';
+import PayNow from './PayNow';
 const data = [
   {
     id: 1,
@@ -51,16 +52,48 @@ const data = [
     rate: 5,
     sold: 69,
   },
+  {
+    id: 5,
+    title: 'Móc khóa kim loại Nguyên tố Vision game Genshin Impact ',
+    image:
+      'https://product.hstatic.net/1000273792/product/1_7476fd4a35ce4aed8caf8e20194debf7_large.jpg',
+    price: 55000,
+    sale: 12,
+    rate: 5,
+    sold: 69,
+  },
+  {
+    id: 6,
+    title: 'Móc khóa mica anime Kimetsu no Yaiba',
+    image:
+      'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
+    price: 55000,
+    sale: 0,
+    rate: 5,
+    sold: 69,
+  },
+  {
+    id: 7,
+    title: 'Móc khóa mica anime Kimetsu no Yaiba',
+    image:
+      'https://product.hstatic.net/1000273792/product/0_53512bfb57584c98baa4a8bbe5f725d0_large.jpg',
+    price: 55000,
+    sale: 99,
+    rate: 5,
+    sold: 69,
+  },
 ];
 export default function Cart() {
   return (
     <View style={styles.cartContainer}>
       <Header />
       <FlatList
+        showsVerticalScrollIndicator={false}
         data={data}
         renderItem={({item, index}) => <CartItem item={item} />}
         keyExtractor={(item) =>item.id.toString()}
       />
+      <PayNow/>
     </View>
   );
 }

@@ -1,25 +1,19 @@
-import React from 'react'
-import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
-
+import React from 'react';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 export default function ListAction() {
-    return (
-        <View style={styles.listAction}>
-            <TouchableOpacity style={styles.addCart}>
-            <Text style={{fontSize: 16, fontWeight: 'bold', color: 'white'}}>
-                THÊM VÀO GIỎ
-            </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.buyNow}>
-            <Text style={{fontSize: 16, fontWeight: 'bold', color: 'white'}}>
-                MUA NGAY
-            </Text>
-            </TouchableOpacity>
-      </View>
-    )
+  return (
+    <View style={styles.listAction}>
+      <TouchableOpacity style={styles.addCart}>
+        <Icon style={styles.icon} name="cart" size={24} color="white" />
+        <Text style={styles.title}>THÊM VÀO GIỎ</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-     //action
+  //action
   listAction: {
     position: 'absolute',
     bottom: 0,
@@ -28,17 +22,19 @@ const styles = StyleSheet.create({
   },
   addCart: {
     flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'black',
-    marginHorizontal: 10,
+    justifyContent: 'center',
+    backgroundColor: '#49d292',
+    marginHorizontal: 20,
+    borderRadius:10,
     padding: 10,
   },
-  buyNow: {
-    flex: 1,
-    alignItems: 'center',
-    // justifyContent: 'center',
-    backgroundColor: 'black',
-    margin: 10,
-    padding: 10,
+  icon: {},
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'white',
+    paddingHorizontal: 10,
   },
-})
+});
