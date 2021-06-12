@@ -9,7 +9,7 @@ export default function PayNow() {
                 <Text style={styles.totalPrice}>123,456,000 đ</Text>
             </View>
             <TouchableOpacity style={styles.buttonTotal}>
-                <Text style={styles.buttonTotalTitle}>Tiến hành đặt hàng</Text>
+                <Text style={styles.buttonTotalTitle}>Tiến hành đặt hàngg</Text>
             </TouchableOpacity>
         </View>
     )
