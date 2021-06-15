@@ -12,6 +12,7 @@ export default function PayNow() {
                 <Text style={styles.buttonTotalTitle}>Tiến hành đặt hàngg</Text>
             </TouchableOpacity>
         </View>
+        
     )
 }
 

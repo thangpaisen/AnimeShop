@@ -10,6 +10,7 @@
         "u",
         "xanh"
     ],
+    "autoimport.showNotifications": true,
     "autoimport.doubleQuotes": true,
-    "autoimport.showNotifications": true
+    "autoimport.filesToScan": "**/*.{ts,tsx,js,jsx}"
 }
