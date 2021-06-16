@@ -5,7 +5,7 @@ import image from '../assets/image/logo3.png';
 import logo2 from '../assets/image/logo2.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
   return (
     <View style={styles.loginContainer}>
       <View style={styles.main}>   
@@ -59,13 +59,16 @@ export default function LoginScreen() {
           linearGradientProps={{
             colors:['#09bff2', '#218bd9', '#218bd9']
           }}
+          onPress={()=>navigation.navigate('TabMenu')}
           // buttonStyle={{borderRadius:20}}
         />
         <View style={styles.signup}>
             <Text style={{fontSize: 14}} >
                 Bạn chưa có tài khoản?
             </Text>
-            <TouchableOpacity >
+            <TouchableOpacity 
+              onPress={()=>navigation.navigate('SignupScreen')}
+            >
                 <Text style={styles.signupNow}>Đăng kí ngay</Text>
             </TouchableOpacity>
         </View>

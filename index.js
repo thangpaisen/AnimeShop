@@ -12,4 +12,4 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import Cart from './components/Cart/Cart';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => SignupScreen);
+AppRegistry.registerComponent(appName, () => App);
