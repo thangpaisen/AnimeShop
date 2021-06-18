@@ -59,7 +59,7 @@ export default function LoginScreen({navigation}) {
           linearGradientProps={{
             colors:['#09bff2', '#218bd9', '#218bd9']
           }}
-          onPress={()=>navigation.navigate('TabMenu')}
+          onPress={()=>navigation.replace('TabMenu')}
           // buttonStyle={{borderRadius:20}}
         />
         <View style={styles.signup}>

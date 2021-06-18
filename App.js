@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import Home from './components/Home/Home';
 import Cart from './components/Cart/Cart';
 import SplashScreen from './Screens/SplashScreen';
 import LoginScreen from './Screens/LoginScreen';
+import Settings from './Screens/Settings';
 import SignupScreen from './Screens/SignupScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -39,9 +41,36 @@ const HomeScreen = () => {
 const Tab = createMaterialBottomTabNavigator();
 const TabMenu= () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Cart" component={Cart} />
+    <Tab.Navigator
+        activeColor="#09bff2"
+        inactiveColor='gray'
+        barStyle={{ backgroundColor: 'white' }}
+        // labeled={false}
+        >
+      <Tab.Screen name="Home" component={Home}
+        options={{
+            tabBarLabel: 'Trang Chủ',
+            tabBarIcon: ({color}) => (
+              <Icon name="planet" size={24} color={color} />
+            ),
+          }}
+      />
+      <Tab.Screen name="Cart" component={Cart} 
+          options={{
+            tabBarLabel: 'Giỏ hàng',
+            tabBarIcon: ({color}) => (
+              <Icon name="cart" size={24} color={color} />
+            ),
+          }}
+      />
+      <Tab.Screen name="Settings" component={Settings} 
+        options={{
+            tabBarLabel: 'Cá nhân',
+            tabBarIcon: ({color}) => (
+              <Icon name="person" size={24} color={color} />
+            ),
+          }}
+      />
     </Tab.Navigator>
   )
 }

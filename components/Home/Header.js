@@ -1,14 +1,19 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
-export default function Header() {
+export default function Header({navigation}) {
     return (
         <View style={styles.container}>
             <View style={styles.headerSearch}>
                 <Icon name="search-outline" size={24} color="#999"/>
                 <Text style={styles.textSearch}>Bạn tìm gì hôm nay?</Text>
             </View>
-            <Icon style={styles.cart} name="cart-outline" size={26} color="white"/>
+            <TouchableOpacity
+                 onPress={()=>navigation.navigate('Cart')}
+            >
+                <Icon style={styles.cart} name="cart-outline" size={26} color="white"/>
+            </TouchableOpacity>
+            
         </View>
     )
 }

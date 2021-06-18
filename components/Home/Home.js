@@ -11,7 +11,7 @@ import NetworkError from '../../Screens/NetworkError';
 const wait = timeout => {
   return new Promise(resolve => setTimeout(resolve, timeout));
 };
-const Home = () => {
+const Home = ({navigation}) => {
   const [netStatus, setNet] = useState(true);
   useEffect(() => {
     NetInfo.addEventListener(state => {
@@ -25,7 +25,7 @@ const Home = () => {
   }, []);
   return (
     <>
-      <Header />
+      <Header navigation={navigation}/>
      { !netStatus?<NetworkError/>:<ScrollView
         showsVerticalScrollIndicator={false}
         refreshControl={
