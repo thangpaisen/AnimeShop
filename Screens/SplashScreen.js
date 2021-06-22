@@ -30,14 +30,14 @@ export default function SplashScreen() {
                 style={styles.loading}
                 source={Loading}
             />
-            <Image
+            {/* <Image
                 style={styles.image3}
                 source={Loading2}
             />
             <Image
                 style={styles.image4}
                 source={Loading2}
-            />
+            /> */}
             
         </View>
     )
