@@ -3,19 +3,23 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Rating} from 'react-native-elements';
-export default function Description() {
+import 'intl';
+import 'intl/locale-data/jsonp/en';
+export default function Description({item}) {
+    const currentPrice = Intl.NumberFormat().format(item.price - item.price *item.sale/100);
+    const parentPrice = Intl.NumberFormat().format(item.price);
     return (
         <View style={styles.description}>
             <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>
-              Mặt nạ che bịt mắt ngủ hình ếch xanh Pepe siêu bựa dành cho vozer
+              {item.title}
             </Text>
             <View style={styles.price}>
-              <Text style={styles.currentPrice}>55.000 đ</Text>
-              <Text style={styles.parentPrice}>69.000 đ</Text>
+              <Text style={styles.currentPrice}>{currentPrice} đ</Text>
+              <Text style={styles.parentPrice}>{parentPrice} đ</Text>
             </View>
             <View style={styles.ratting}>
               <Rating imageSize={16} readonly startingValue={5} />
-              <Text style={styles.ratePoint}>4.9</Text>
+              <Text style={styles.ratePoint}>{item.rate}</Text>
               <View style={styles.sold}>
                 <View
                   style={{
@@ -25,7 +29,7 @@ export default function Description() {
                     backgroundColor: '#999',
                   }}
                 />
-                <Text style={styles.soldPoint}>124 Đã bán</Text>
+                <Text style={styles.soldPoint}>{item.sold} Đã bán</Text>
               </View>
             </View>
           </View>

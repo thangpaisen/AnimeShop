@@ -1,16 +1,22 @@
 import React from 'react'
-import { StyleSheet, Text, View,Image,Dimensions,ImageBackground } from 'react-native'
+import { StyleSheet, Text, View,Image,Dimensions,ImageBackground,Pressable } from 'react-native'
 import { Rating } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
 const Product = ({item}) => {
+const navigation = useNavigation();
+
     // console.log( typeof
     // item.price.toLocaleString()
     // );
     const currentPrice = Intl.NumberFormat().format(item.price - item.price *item.sale/100);
     const parentPrice = Intl.NumberFormat().format(item.price);
     return (
-      <View style={styles.container}>
+      <Pressable
+        onPress={()=>navigation.navigate('ProductDetails',{item})}
+        style={styles.container}
+        >
         <Image
           style={styles.image}
           source={{
@@ -47,7 +53,7 @@ const Product = ({item}) => {
             <Text style={styles.parentPrice}>{parentPrice} đ</Text>
           ) : null}
         </View>
-      </View>
+      </Pressable>
     );
 }
 

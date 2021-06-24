@@ -1,15 +1,23 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 export default function Header() {
+    const navigation = useNavigation();
     return (
         <View style={styles.header}>
-          <View style={styles.back}>
+          <Pressable 
+            style={styles.back}
+            onPress={()=>navigation.goBack()}
+            >
             <Icon name="arrow-back-outline" size={24} color="white" />
-          </View>
-          <View style={styles.cart}>
+          </Pressable>
+          <Pressable 
+            style={styles.cart}
+             onPress={()=>navigation.navigate('Cart')}
+            >
             <Icon name="cart-outline" size={24} color="white" />
-          </View>
+          </Pressable>
         </View>
     )
 }

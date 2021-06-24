@@ -1,13 +1,24 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {Button} from 'react-native-elements';
+
 export default function ListAction() {
   return (
     <View style={styles.listAction}>
-      <TouchableOpacity style={styles.addCart}>
+      <Button
+          icon={
+        <Icon style={styles.icon} name="cart" size={24} color="white" />
+        }
+      
+        buttonStyle={styles.buttonAddCart}
+        titleStyle={styles.buttonTitle}
+        title={'Thêm vào giỏ hàng'}
+      />
+      {/* <TouchableOpacity style={styles.addCart}>
         <Icon style={styles.icon} name="cart" size={24} color="white" />
         <Text style={styles.title}>THÊM VÀO GIỎ</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
@@ -17,23 +28,18 @@ const styles = StyleSheet.create({
   listAction: {
     position: 'absolute',
     bottom: 0,
-    flexDirection: 'row',
-    alignItems: 'center',
+    left: 0,
+    right: 0,
   },
-  addCart: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#49d292',
-    marginHorizontal: 20,
+    buttonAddCart: {
+    backgroundColor: '#09bff2',
+    marginHorizontal: 10,
     borderRadius:10,
     padding: 10,
   },
-  icon: {},
-  title: {
+  buttonTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     color: 'white',
     paddingHorizontal: 10,
   },

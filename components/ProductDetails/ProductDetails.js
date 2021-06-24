@@ -9,34 +9,37 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+// import { useNavigation } from '@react-navigation/native';
 import Header from './Header';
 import Description from './Description';
 import SelectSwatch from './SelectSwatch';
 import ListAction from './ListAction';
 import Details from './Details';
 import Comment from './Comment';
-export default function ProductDetails() {
-  const onchange=(nativeEvent)=>{
-        if(nativeEvent)
-        {
-            const slide= nativeEvent.contentOffset.y
-            //nativeEvent.contentOffset.x khỏag cách từ đầu scroll đến hình thứ 1,2,3... 
-            //nativeEvent.layoutMeasurement.width chiều rộng của cái 
-           console.log(slide)
-        }
-    }
+import ListImage from './ListImage';
+export default function ProductDetails({route}) {
+  // const navigation = useNavigation();
+   const {item} = route.params;
+   console.log(item);
+  // const onchange=(nativeEvent)=>{
+  //       if(nativeEvent)
+  //       {
+  //           const slide= nativeEvent.contentOffset.y
+  //           //nativeEvent.contentOffset.x khỏag cách từ đầu scroll đến hình thứ 1,2,3... 
+  //           //nativeEvent.layoutMeasurement.width chiều rộng của cái 
+  //          console.log(slide)
+  //       }
+  //   }
   return (
     <>
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false} onScroll={({nativeEvent})=>onchange(nativeEvent)}>
+      <ScrollView 
+        style={styles.container} 
+        showsVerticalScrollIndicator={false} 
+        // onScroll={({nativeEvent})=>onchange(nativeEvent)}
+          >
         <View style={styles.main}>
-          <Image
-            style={styles.imageProduct}
-            source={{
-              // uri: 'https://cf.shopee.vn/file/52435a1cc52a5e38a00eed1da5f77080',
-              uri: 'https://product.hstatic.net/1000273792/product/z1_97735c4113e74912b3935225b9b2f6c9_large.jpg',
-            }}
-          />
-          <Description />
+          <ListImage item={item}/>
+          <Description item={item}/>
           <SelectSwatch />
           <Details/>
           <Comment/>

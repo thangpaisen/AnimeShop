@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
     backgroundColor: '#5cfff2',
+    // backgroundColor: 'white',
     justifyContent: 'center',
     
   },
@@ -88,6 +89,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingVertical:30,
     justifyContent: 'center',
+    // paddingHorizontal: 20,
     marginHorizontal:20,
     borderRadius:20,
     elevation:5

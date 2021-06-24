@@ -6,11 +6,14 @@ import {
   Image,
   Dimensions,
   ImageBackground,
+  Pressable
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import {Rating} from 'react-native-elements';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
 const FigureItem = ({item}) => {
+  const navigation = useNavigation();
   // console.log( typeof
   // item.price.toLocaleString()
   // );
@@ -19,7 +22,9 @@ const FigureItem = ({item}) => {
   );
   const parentPrice = Intl.NumberFormat().format(item.price);
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container}
+        onPress={()=>navigation.navigate('ProductDetails',{item})}
+      >
       <View style={styles.description}>
         <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>
           {item.title}
@@ -58,7 +63,7 @@ const FigureItem = ({item}) => {
           </ImageBackground>
         ) : null}
       </ImageBackground>
-    </View>
+    </Pressable>
   );
 };
 

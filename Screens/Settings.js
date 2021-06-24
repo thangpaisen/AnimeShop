@@ -2,7 +2,9 @@ import React from 'react';
 import {StyleSheet, Text, View,TouchableOpacity,FlatList} from 'react-native';
 import {Avatar, Header, Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons'
+import { useNavigation } from '@react-navigation/native';
 export default function Settings() {
+  const navigation = useNavigation();
   const ItemSettings = ({item})=>(
     <View style={styles.settingItem}>
       <Icon style={styles.iconSetting} name={item.icon} size={20} color='black'/>
@@ -47,8 +49,9 @@ export default function Settings() {
         </View> */}
       </View>
       <Button 
-        containerStyle={styles.buttonLogout}
+        buttonStyle={styles.buttonLogout}
         titleStyle={styles.buttonLogoutTitle}
+        onPress={()=>navigation.navigate('LoginScreen')}
         title={'Đăng Xuất'}/>
     </View>
   );
@@ -125,7 +128,8 @@ const styles = StyleSheet.create({
   buttonLogout:{
     marginHorizontal:10,
     marginVertical:20,
-    borderRadius:10
+    borderRadius:10,
+    backgroundColor: '#09bff2'
   },
   buttonLogoutTitle:{
     fontSize: 16,

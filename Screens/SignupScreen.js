@@ -70,7 +70,7 @@ export default function SignupScreen({navigation}) {
         <View style={styles.signup}>
           <Text style={{fontSize: 14}}>Bạn đã có tài khoản?</Text>
           <TouchableOpacity
-            onPress={()=>navigation.navigate('SignupScreen')}
+            onPress={()=>navigation.navigate('LoginScreen')}
           >
             <Text style={styles.signupNow}>Đăng nhập ngay</Text>
           </TouchableOpacity>

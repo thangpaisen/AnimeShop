@@ -1,14 +1,19 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View,Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 export default function Header() {
+    const navigation = useNavigation();
   return (
     <View style={styles.headerCart}>
-      <View style={styles.back}>
+      <Pressable 
+        style={styles.back}
+        onPress={()=>navigation.goBack()}
+        >
         <Icon name="arrow-back-outline" size={24} color="white" />
-      </View>
+      </Pressable>
       <View style={styles.headerCartTile}>
-        <Text style={styles.textHeaderCart}>Giỏ hàng (9)</Text>
+        <Text style={styles.textHeaderCart}>Giỏ hàng của tôi</Text>
       </View>
       <View style={[styles.back, {backgroundColor: 'transparent'}]}></View>
       

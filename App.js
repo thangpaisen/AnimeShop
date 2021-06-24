@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Home from './components/Home/Home';
 import Cart from './components/Cart/Cart';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 import SplashScreen from './Screens/SplashScreen';
 import LoginScreen from './Screens/LoginScreen';
 import Settings from './Screens/Settings';
@@ -33,6 +34,7 @@ const HomeScreen = () => {
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="TabMenu" component={TabMenu} />
         <Stack.Screen name="SignupScreen" component={SignupScreen} />
+        <Stack.Screen name="ProductDetails" component={ProductDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );
