@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 import Product from './Product';
 const data = [
   {
@@ -45,11 +46,15 @@ const data = [
   },
 ];
 const NewProducts = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>😍 HÀNG MỚI VỀ</Text>
-        <TouchableOpacity style={styles.showAll}>
+        <TouchableOpacity 
+          style={styles.showAll}
+          onPress={()=>navigation.navigate('ListProducts',{title:'😍 HÀNG MỚI VỀ'})}
+          >
           <Text style={{fontSize: 16, fontWeight: 'bold'}}>All</Text>
           <Icon name="chevron-forward-outline" size={20} color="black" />
         </TouchableOpacity>

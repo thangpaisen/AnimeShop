@@ -16,7 +16,7 @@ const data = [
   },
   {
     id: 3,
-    CategoryTitle: 'Móc khóa - Standee -Huy Hiệu',
+    CategoryTitle: 'Móc khóa - Standee -Huy Hiệu ',
     CategoryImage:'https://product.hstatic.net/1000273792/product/megumin2_e85b40fc106d472482431f024b54b939_grande.jpg'
 
   },

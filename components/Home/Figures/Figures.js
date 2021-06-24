@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 import FigureItem from './FigureItem';
 const data = [
   {
@@ -35,6 +36,7 @@ const data = [
   },
 ];
 const Figures = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -43,7 +45,10 @@ const Figures = () => {
             😍 FIGURE - MÔ HÌNH
           </Text>
         </View>
-        <TouchableOpacity style={styles.showAll}>
+        <TouchableOpacity 
+          style={styles.showAll}
+          onPress={()=>navigation.navigate('ListProducts',{title:'😍 FIGURE - MÔ HÌNH'})}
+          >
           <Text style={{fontSize: 16, fontWeight: 'bold'}}>All</Text>
           <Icon name="chevron-forward-outline" size={20} color="black" />
         </TouchableOpacity>

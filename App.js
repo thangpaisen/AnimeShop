@@ -8,17 +8,17 @@ import SplashScreen from './Screens/SplashScreen';
 import LoginScreen from './Screens/LoginScreen';
 import Settings from './Screens/Settings';
 import SignupScreen from './Screens/SignupScreen';
+import ListProducts from './components/ListProducts';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
   return <>{loading ? <SplashScreen /> : <HomeScreen />}</>;
 };
@@ -27,56 +27,61 @@ const HomeScreen = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
+        initialRouteName="Home"
         screenOptions={{
-          headerShown: false
-        }}
-      >
+          headerShown: false,
+        }}>
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="TabMenu" component={TabMenu} />
         <Stack.Screen name="SignupScreen" component={SignupScreen} />
         <Stack.Screen name="ProductDetails" component={ProductDetails} />
+        <Stack.Screen name="ListProducts" component={ListProducts} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
 const Tab = createMaterialBottomTabNavigator();
-const TabMenu= () => {
+const TabMenu = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Settings"
-        activeColor="#09bff2"
-        inactiveColor='gray'
-        barStyle={{ backgroundColor: 'white' }}
-        // labeled={false}
-        >
-      <Tab.Screen name="Home" component={Home}
+      initialRouteName="Home"
+      activeColor="#09bff2"
+      inactiveColor="gray"
+      barStyle={{backgroundColor: 'white'}}
+      // labeled={false}
+    >
+      <Tab.Screen
+        name="Home"
+        component={Home}
         options={{
-            tabBarLabel: 'Trang Chủ',
-            tabBarIcon: ({color}) => (
-              <Icon name="planet" size={24} color={color} />
-            ),
-          }}
+          tabBarLabel: 'Trang Chủ',
+          tabBarIcon: ({color}) => (
+            <Icon name="planet" size={24} color={color} />
+          ),
+        }}
       />
-      <Tab.Screen name="Cart" component={Cart} 
-          options={{
-            tabBarLabel: 'Giỏ hàng',
-            tabBarIcon: ({color}) => (
-              <Icon name="cart" size={24} color={color} />
-            ),
-          }}
-      />
-      <Tab.Screen name="Settings" component={Settings} 
+      <Tab.Screen
+        name="Cart"
+        component={Cart}
         options={{
-            tabBarLabel: 'Cá nhân',
-            tabBarIcon: ({color}) => (
-              <Icon name="person" size={24} color={color} />
-            ),
-          }}
+          tabBarLabel: 'Giỏ hàng',
+          tabBarIcon: ({color}) => <Icon name="cart" size={24} color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          tabBarLabel: 'Cá nhân',
+          tabBarIcon: ({color}) => (
+            <Icon name="person" size={24} color={color} />
+          ),
+        }}
       />
     </Tab.Navigator>
-  )
-}
+  );
+};
 export default App;
 
 const styles = StyleSheet.create({});

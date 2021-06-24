@@ -20,7 +20,7 @@ import ListImage from './ListImage';
 export default function ProductDetails({route}) {
   // const navigation = useNavigation();
    const {item} = route.params;
-   console.log(item);
+   
   // const onchange=(nativeEvent)=>{
   //       if(nativeEvent)
   //       {

@@ -1,15 +1,19 @@
 import React from 'react'
-import { StyleSheet, Text, View,Dimensions,Image} from 'react-native'
-
+import { StyleSheet, Text, View,Dimensions,Image,Pressable} from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 const CategoryItem = ({item}) => {
+    const navigation = useNavigation();
     return (
-        <View style={styles.container}> 
+        <Pressable 
+            style={styles.container}
+            onPress={()=>navigation.navigate('ListProducts',{title:item.CategoryTitle})}
+            > 
             <Image 
                 style={styles.image}
                 source={{uri:item.CategoryImage}}
             />
             <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">{item.CategoryTitle}</Text>
-        </View>
+        </Pressable>
     )
 }
 
