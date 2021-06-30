@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "980342399176",
+    "project_id": "animeshop-c0be8",
+    "storage_bucket": "animeshop-c0be8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980342399176:android:302cf28cd8b2e0139485fd",
+        "android_client_info": {
+          "package_name": "com.animeshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980342399176-8cvdmp849elu502b78k92jqvpnkdgm66.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNovE_d1lWdeXIW1mP-QUW94rC_Dh7bNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980342399176-8cvdmp849elu502b78k92jqvpnkdgm66.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

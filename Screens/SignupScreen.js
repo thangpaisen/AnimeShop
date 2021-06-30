@@ -1,11 +1,21 @@
-import React from 'react';
+import React,{useContext,useState} from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {Input, Button, SocialIcon} from 'react-native-elements';
 import image from '../assets/image/logo3.png';
 import logo2 from '../assets/image/logo2.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
+
+import {AuthContext} from '../navigation/AuthProvider';
+
 export default function SignupScreen({navigation}) {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [name, setName] = useState();
+  
+  const [confirmPassword, setConfirmPassword] = useState();
+
+  const {register} = useContext(AuthContext);
   return (
     <View style={styles.loginContainer}>
       <View style={styles.main}>
@@ -28,10 +38,11 @@ export default function SignupScreen({navigation}) {
             inputContainerStyle={{borderBottomWidth: 0.5}}
             errorStyle={{color: 'red', marginLeft: 0}}
              errorMessage=''
+             onChangeText={setEmail}
           />
           <Input
             label="Password"
-            secureTextEntry={true}
+            secureTextEntry={false}
             labelStyle={{fontWeight: '500', fontSize: 16}}
             placeholder="Nhập Password vào...."
             leftIcon={<Icon name="lock-closed" size={20} color="gray" />}
@@ -40,18 +51,8 @@ export default function SignupScreen({navigation}) {
             inputContainerStyle={{borderBottomWidth: 0.5}}
             errorStyle={{color: 'red', marginLeft: 0}}
             errorMessage=''
-          />
-          <Input
-            label="Nhập lại Password"
-            secureTextEntry={true}
-            labelStyle={{fontWeight: '500', fontSize: 16}}
-            placeholder="Nhập Password vào...."
-            leftIcon={<Icon name="lock-closed" size={20} color="gray" />}
-            rightIcon={<Icon name="eye-off" size={20} color="gray" />}
-            // containerStyle={{backgroundColor:'red'}}
-            inputContainerStyle={{borderBottomWidth: 0.5}}
-            errorStyle={{color: 'red', marginLeft: 0}}
-            errorMessage=''
+             onChangeText={setPassword}
+
           />
         </View>
         <Button
@@ -65,7 +66,11 @@ export default function SignupScreen({navigation}) {
           linearGradientProps={{
             colors: ['#09bff2', '#218bd9', '#218bd9'],
           }}
-          onPress={()=>navigation.navigate('LoginScreen')}
+          onPress={()=>{
+            console.log(email,password);
+            register(name,email, password)
+            // navigation.navigate('LoginScreen')
+          }}
         />
         <View style={styles.signup}>
           <Text style={{fontSize: 14}}>Bạn đã có tài khoản?</Text>

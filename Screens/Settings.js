@@ -1,10 +1,14 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import {StyleSheet, Text, View,TouchableOpacity,FlatList} from 'react-native';
 import {Avatar, Header, Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
+import {AuthContext} from '../navigation/AuthProvider';
+
 export default function Settings() {
   const navigation = useNavigation();
+  const {user,logout} =useContext(AuthContext);
+  console.log(user)
   const ItemSettings = ({item})=>(
     <View style={styles.settingItem}>
       <Icon style={styles.iconSetting} name={item.icon} size={20} color='black'/>
@@ -30,8 +34,8 @@ export default function Settings() {
           containerStyle={styles.imageAvatar}
         />
         <View style={styles.profileTitle}>
-          <Text style={styles.fullName}>❤ Nguyễn Hữu Thắng</Text>
-          <Text style={styles.username}>@ThangPaisen</Text>
+          <Text style={styles.fullName}>❤ {user.email}</Text>
+          <Text style={styles.username}>Hello</Text>
         </View>
       </View>
       <View style={styles.optionSettings}>
@@ -51,7 +55,7 @@ export default function Settings() {
       <Button 
         buttonStyle={styles.buttonLogout}
         titleStyle={styles.buttonLogoutTitle}
-        onPress={()=>navigation.navigate('LoginScreen')}
+        onPress={()=>logout()}
         title={'Đăng Xuất'}/>
     </View>
   );

@@ -1,11 +1,17 @@
-import React from 'react';
-import {StyleSheet, Text, View, Image,TouchableOpacity} from 'react-native';
+import React,{useContext,useState} from 'react';
+import {StyleSheet, Text, View, Image,TouchableOpacity,Alert} from 'react-native';
 import {Input, Button, SocialIcon} from 'react-native-elements';
 import image from '../assets/image/logo3.png';
 import logo2 from '../assets/image/logo2.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
+
+import {AuthContext} from '../navigation/AuthProvider';
 export default function LoginScreen({navigation}) {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const {login,fbLogin} = useContext(AuthContext);
   return (
     <View style={styles.loginContainer}>
       <View style={styles.main}>   
@@ -33,6 +39,7 @@ export default function LoginScreen({navigation}) {
             inputContainerStyle={{borderBottomWidth: 0.5}}
             errorStyle={{color: 'red', marginLeft: 0}}
             errorMessage=''
+            onChangeText={setEmail}
           />
           <Input
             label="Password"
@@ -50,6 +57,7 @@ export default function LoginScreen({navigation}) {
             inputContainerStyle={{borderBottomWidth: 0.5}}
             errorStyle={{color: 'red', marginLeft: 0}}
             errorMessage=''
+            onChangeText={setPassword}
           />
         </View>
           <Button
@@ -59,7 +67,10 @@ export default function LoginScreen({navigation}) {
           linearGradientProps={{
             colors:['#09bff2', '#218bd9', '#218bd9']
           }}
-          onPress={()=>navigation.replace('TabMenu')}
+          onPress={()=>{
+            Alert.alert("Login","ok")
+            login(email, password)
+            }}
           // buttonStyle={{borderRadius:20}}
         />
         <View style={styles.signup}>
@@ -72,6 +83,14 @@ export default function LoginScreen({navigation}) {
                 <Text style={styles.signupNow}>Đăng kí ngay</Text>
             </TouchableOpacity>
         </View>
+        <SocialIcon
+          title='Sign In With Facebook'
+          button
+          type='facebook'
+           onPress={()=>{
+            fbLogin()
+            }}
+        />
       </View>
     </View>
   );
