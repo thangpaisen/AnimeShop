@@ -6,9 +6,9 @@ import { useNavigation } from '@react-navigation/native';
 import {AuthContext} from '../navigation/AuthProvider';
 
 export default function Settings() {
-  const navigation = useNavigation();
-  const {user,logout} =useContext(AuthContext);
-  console.log(user)
+  // const navigation = useNavigation();
+  // const {user,logout} =useContext(AuthContext);
+  // console.log(user)
   const ItemSettings = ({item})=>(
     <View style={styles.settingItem}>
       <Icon style={styles.iconSetting} name={item.icon} size={20} color='black'/>
@@ -34,7 +34,8 @@ export default function Settings() {
           containerStyle={styles.imageAvatar}
         />
         <View style={styles.profileTitle}>
-          <Text style={styles.fullName}>❤ {user.email}</Text>
+          {/* <Text style={styles.fullName}>❤ {user.email}</Text> */}
+          <Text style={styles.fullName}>❤ Nguyễn Hữu Thắng</Text>
           <Text style={styles.username}>Hello</Text>
         </View>
       </View>

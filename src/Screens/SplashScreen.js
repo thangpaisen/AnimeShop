@@ -8,18 +8,18 @@ import * as Animatable from 'react-native-animatable';
 import NetInfo from "@react-native-community/netinfo";
 import NetworkError from './NetworkError'
 export default function SplashScreen() {
-    const [netStatus, setNet] = useState(true)
-    useEffect(() => {
-        NetInfo.addEventListener(state => {
-        setNet(state.isConnected)
-        })
-        return () => {
+    // const [netStatus, setNet] = useState(true)
+    // useEffect(() => {
+    //     NetInfo.addEventListener(state => {
+    //     setNet(state.isConnected)
+    //     })
+    //     return () => {
             
-        }
-    })
+    //     }
+    // })
     return (
         <View style={styles.container}>
-             {!netStatus && <NetworkError />}
+             {/* {!netStatus && <NetworkError />} */}
             <Animatable.Image
             animation="bounce"
             iterationCount={9999} direction="alternate"

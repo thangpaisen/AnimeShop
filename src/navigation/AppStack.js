@@ -28,7 +28,7 @@ const Tab = createMaterialBottomTabNavigator();
 const TabMenu = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Settings"
+      initialRouteName="Home"
       activeColor="#09bff2"
       inactiveColor="gray"
       barStyle={{backgroundColor: 'white'}}
