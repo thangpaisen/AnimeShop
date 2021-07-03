@@ -5,26 +5,34 @@ import {AuthContext} from "./AuthProvider";
 
 import AuthStack from './AuthStack';
 import AppStack from './AppStack';
+import {setUser} from  '../redux/actions/user'
+import {useSelector,useDispatch } from 'react-redux'
 
 const Routes = () => {
+  const user = useSelector((state) => state.user)
   // const {user, setUser} = useContext(AuthContext);
-  // const [initializing, setInitializing] = useState(true);
+    console.log('user1',user)
+  
+  const dispatch = useDispatch()
+  const [initializing, setInitializing] = useState(true);
 
-  // function onAuthStateChanged(user) {
-  //   setUser(user);
-  //   if (initializing) setInitializing(false);
-  // }
+  function onAuthStateChanged(user) {
+    const action = setUser(user);
+    console.log(user)
+    dispatch(action)
+    if (initializing) setInitializing(false);
+  }
 
-  // useEffect(() => {
-  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-  //   return subscriber; // unsubscribe on unmount
-  // }, []);
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
 
-  // if (initializing) return null;
+  if (initializing) return null;
 
   return (
     <NavigationContainer>
-      {true ? <AppStack /> : <AuthStack />}
+      {user? <AppStack /> : <AuthStack />}
     </NavigationContainer>
   );
 };

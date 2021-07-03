@@ -41,12 +41,20 @@ const initStateProducts = [
   },
 ];
 
-const products = (state = initStateProducts, action) => {
+const products = (state = []
+  , action) => {
   switch (action.type) {
+    case 'SET_PRODUCTS':
+      return [
+          ...action.payload,
+      ];
     case 'ADD_NEW_PRODUCT':
-      return state
+      return [
+          ...state,
+          ...action.payload,
+      ];
     default:
-      return state
+      return state;
   }
 }
 

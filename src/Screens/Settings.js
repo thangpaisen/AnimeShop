@@ -4,6 +4,8 @@ import {Avatar, Header, Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
 import {AuthContext} from '../navigation/AuthProvider';
+import {logout} from '../redux/actions/user'
+import {useDispatch,useSelector} from 'react-redux'
 
 export default function Settings() {
   // const navigation = useNavigation();
@@ -22,6 +24,9 @@ export default function Settings() {
     {icon:'gift' ,title:'Vouchers của tôi'},
     {icon:'reader',title:'Nhiệm vụ của của tôi'},
   ]
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
+
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
@@ -35,7 +40,7 @@ export default function Settings() {
         />
         <View style={styles.profileTitle}>
           {/* <Text style={styles.fullName}>❤ {user.email}</Text> */}
-          <Text style={styles.fullName}>❤ Nguyễn Hữu Thắng</Text>
+          <Text style={styles.fullName}>❤ {user.email}</Text>
           <Text style={styles.username}>Hello</Text>
         </View>
       </View>
@@ -56,7 +61,7 @@ export default function Settings() {
       <Button 
         buttonStyle={styles.buttonLogout}
         titleStyle={styles.buttonLogoutTitle}
-        onPress={()=>logout()}
+        onPress={()=>dispatch(logout())}
         title={'Đăng Xuất'}/>
     </View>
   );

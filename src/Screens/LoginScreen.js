@@ -5,13 +5,14 @@ import image from '../assets/image/logo3.png';
 import logo2 from '../assets/image/logo2.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
-
-import {AuthContext} from '../navigation/AuthProvider';
+import {useDispatch} from 'react-redux';
+import {loginUser} from '../redux/actions/user'
+// import {AuthContext} from '../navigation/AuthProvider';
 export default function LoginScreen({navigation}) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
-  const {login,fbLogin} = useContext(AuthContext);
+  const dispatch = useDispatch()
+  // const {login,fbLogin} = useContext(AuthContext);
   return (
     <View style={styles.loginContainer}>
       <View style={styles.main}>   
@@ -73,7 +74,7 @@ export default function LoginScreen({navigation}) {
           }}
           onPress={()=>{
             // Alert.alert("Login","ok")
-            login(email.trim(), password);
+            dispatch(loginUser(email.trim(),password));
             }}
         />
         <View style={styles.signup}>

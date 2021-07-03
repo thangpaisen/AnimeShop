@@ -7,6 +7,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {AuthContext} from '../navigation/AuthProvider';
+import {useDispatch} from 'react-redux';
+import {registerUser} from '../redux/actions/user'
 
 export default function SignupScreen({navigation}) {
   const [email, setEmail] = useState();
@@ -15,7 +17,9 @@ export default function SignupScreen({navigation}) {
   
   const [confirmPassword, setConfirmPassword] = useState();
 
-  const {register} = useContext(AuthContext);
+  // const {register} = useContext(AuthContext);
+  const dispatch = useDispatch()
+
   return (
     <View style={styles.loginContainer}>
       <View style={styles.main}>
@@ -71,7 +75,7 @@ export default function SignupScreen({navigation}) {
           }}
           onPress={()=>{
             console.log(email,password);
-            register(email,password)
+            dispatch(registerUser(email,password));
             // navigation.navigate('LoginScreen')
           }}
         />

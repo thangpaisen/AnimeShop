@@ -6,7 +6,7 @@ import {useSelector } from 'react-redux'
 
 const Categories = () => {
   const dataCategories = useSelector((state) => state.categories)
-  console.log(dataCategories)
+  // console.log(dataCategories)
   return (
     <View style={styles.container}>
       <View style={styles.header}>
