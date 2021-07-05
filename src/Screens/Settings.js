@@ -26,7 +26,7 @@ export default function Settings() {
   ]
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
-
+  console.log(user)
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
@@ -40,7 +40,7 @@ export default function Settings() {
         />
         <View style={styles.profileTitle}>
           {/* <Text style={styles.fullName}>❤ {user.email}</Text> */}
-          <Text style={styles.fullName}>❤ {user.email}</Text>
+          <Text style={styles.fullName}>❤ { user? user.email : 'Không tên'}</Text>
           <Text style={styles.username}>Hello</Text>
         </View>
       </View>

@@ -10,15 +10,12 @@ import {useSelector,useDispatch } from 'react-redux'
 
 const Routes = () => {
   const user = useSelector((state) => state.user)
-  // const {user, setUser} = useContext(AuthContext);
-    console.log('user1',user)
-  
   const dispatch = useDispatch()
   const [initializing, setInitializing] = useState(true);
 
   function onAuthStateChanged(user) {
     const action = setUser(user);
-    console.log(user)
+    // console.log(user)
     dispatch(action)
     if (initializing) setInitializing(false);
   }
@@ -32,7 +29,7 @@ const Routes = () => {
 
   return (
     <NavigationContainer>
-      {user? <AppStack /> : <AuthStack />}
+      {true? <AppStack /> : <AuthStack />}
     </NavigationContainer>
   );
 };

@@ -41,8 +41,7 @@ const initStateProducts = [
   },
 ];
 
-const products = (state = []
-  , action) => {
+const products = (state = initStateProducts, action) => {
   switch (action.type) {
     case 'SET_PRODUCTS':
       return [
@@ -54,7 +53,7 @@ const products = (state = []
           ...action.payload,
       ];
     default:
-      return state;
+      return [...state];
   }
 }
 

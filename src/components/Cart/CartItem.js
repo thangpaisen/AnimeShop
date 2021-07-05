@@ -1,55 +1,65 @@
-import React from 'react'
-import { StyleSheet, Text, View,Dimensions,Pressable,Image,TouchableOpacity } from 'react-native'
+import React from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Pressable,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
 export default function CartItem({item}) {
-    const currentPrice = Intl.NumberFormat().format(item.price - item.price *item.sale/100);
-    return (
-        <View style={styles.cartItem}>
-        <Image
-          style={styles.image}
-          source={{
-            uri: item.image,
-          }}
-        />
-        <View style={styles.main}>
-          <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">
-            {item.title}
-          </Text>
-          <Text style={styles.price}>{currentPrice} đ</Text>
-          <View style={styles.quantity}>
-            <TouchableOpacity style={styles.quantityDecrease}>
-              <Icon name="caret-back-circle-outline" size={24} color="black" />
-            </TouchableOpacity>
-            <Text style={styles.quantityNumber}>1</Text>
-            <TouchableOpacity style={styles.quantityIncrease}>
-              <Icon
-                name="caret-forward-circle-outline"
-                size={24}
-                color="black"
-              />
-            </TouchableOpacity>
-          </View>
+  const product = item.product;
+  const currentPrice = Intl.NumberFormat().format(
+    product.price - (product.price * product.sale) / 100,
+  );
+  const parentPrice = Intl.NumberFormat().format(product.price);
+  return (
+    <View style={styles.cartItem}>
+      <Image
+        style={styles.image}
+        source={{
+          uri: product.image,
+        }}
+      />
+      <View style={styles.main}>
+        <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">
+          {product.title}
+        </Text>
+        <View style={styles.price}>
+          <Text style={styles.currentPrice}>{currentPrice} đ</Text>
+          <Text style={styles.parentPrice}>{parentPrice} đ</Text>
         </View>
-        <TouchableOpacity style={styles.deleteItem}>
-            <Icon  name="trash" size={24} color="black" />
-        </TouchableOpacity>
-        
+        <View style={styles.quantity}>
+          <TouchableOpacity style={styles.quantityDecrease}>
+            <Icon name="caret-back-circle-outline" size={24} color="black" />
+          </TouchableOpacity>
+          <Text style={styles.quantityNumber}>{item.quantity}</Text>
+          <TouchableOpacity style={styles.quantityIncrease}>
+            <Icon name="caret-forward-circle-outline" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
       </View>
-    )
+      <TouchableOpacity style={styles.deleteItem}>
+        <Icon name="trash" size={24} color="black" />
+      </TouchableOpacity>
+    </View>
+  );
 }
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const WIDTH_IMAGE = windowWidth / 3.5;
 const styles = StyleSheet.create({
-    cartItem: {
+  cartItem: {
     flexDirection: 'row',
     backgroundColor: 'white',
     borderRadius: 5,
     margin: 5,
-    padding:10,
-    elevation:1,
+    padding: 10,
+    elevation: 1,
   },
   image: {
     width: WIDTH_IMAGE,
@@ -65,9 +75,20 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
   },
-  price: {
+  price:{
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  currentPrice: {
     fontSize: 16,
     color: 'red',
+  },
+  parentPrice: {
+    paddingHorizontal: 5,
+    color: '#999',
+    fontSize: 14,
+    textDecorationLine: 'line-through',
+    fontStyle: 'italic',
   },
   quantity: {
     fontSize: 16,
@@ -83,4 +104,4 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     color: 'black',
   },
-})
+});

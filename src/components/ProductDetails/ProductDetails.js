@@ -32,6 +32,7 @@ export default function ProductDetails({route}) {
   //   }
   return (
     <>
+      <Header />
       <ScrollView 
         style={styles.container} 
         showsVerticalScrollIndicator={false} 
@@ -45,8 +46,7 @@ export default function ProductDetails({route}) {
           <Comment/>
         </View>
       </ScrollView>
-      <Header />
-      <ListAction/>
+      <ListAction product={item}/>
     </>
   );
 }
