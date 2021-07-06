@@ -24,7 +24,7 @@ const NoProductCart = () => {
 export default function Cart() {
   const dispatch = useDispatch();
   const dataCart = useSelector(state => state.cart);
-  console.log(dataCart);
+  // console.log(dataCart);
   useEffect(() => {
     dispatch(getDataCart());
   }, [])

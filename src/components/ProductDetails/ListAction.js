@@ -1,11 +1,16 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity,Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Button} from 'react-native-elements';
 import {useDispatch} from 'react-redux'
 import {addToCart} from '../../redux/actions/cart';
 export default function ListAction({product}) {
   const dispatch = useDispatch()
+  const createTwoButtonAlert = () =>
+    Alert.alert(
+      "Thông Báo",
+      "Đã thêm vào giỏ hàng",
+    );
   return (
     <View style={styles.listAction}>
       <Button
@@ -16,6 +21,7 @@ export default function ListAction({product}) {
         onPress={()=>
           {
             dispatch(addToCart(product,1))
+            createTwoButtonAlert();
           }
         }
       />

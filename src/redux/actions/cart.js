@@ -23,3 +23,18 @@ export const addToCart = (product,quantity) => {
         quantity,
     }
 }
+
+export const deleteProductToCart = (product) => {
+    return {
+        type:'DELETE_PRODUCT_TO_CART',
+        payload:product,
+    }
+}
+
+export const UpdateQuantityProductToCart = (product,quantity) => {
+    return {
+        type:'UPDATE_QUANTITY_PRODUCT_TO_CART',
+        payload:product,
+        quantity,
+    }
+}

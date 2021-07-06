@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,6 +7,9 @@ import {
   Dimensions,
   ScrollView,
   TouchableOpacity,
+  Button,
+  Pressable,
+  Alert 
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 // import { useNavigation } from '@react-navigation/native';
@@ -17,26 +20,23 @@ import ListAction from './ListAction';
 import Details from './Details';
 import Comment from './Comment';
 import ListImage from './ListImage';
+
+import Modal from 'react-native-modal';
+
 export default function ProductDetails({route}) {
   // const navigation = useNavigation();
    const {item} = route.params;
-   
-  // const onchange=(nativeEvent)=>{
-  //       if(nativeEvent)
-  //       {
-  //           const slide= nativeEvent.contentOffset.y
-  //           //nativeEvent.contentOffset.x khỏag cách từ đầu scroll đến hình thứ 1,2,3... 
-  //           //nativeEvent.layoutMeasurement.width chiều rộng của cái 
-  //          console.log(slide)
-  //       }
-  //   }
+   const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   return (
     <>
       <Header />
       <ScrollView 
         style={styles.container} 
         showsVerticalScrollIndicator={false} 
-        // onScroll={({nativeEvent})=>onchange(nativeEvent)}
           >
         <View style={styles.main}>
           <ListImage item={item}/>
@@ -46,7 +46,7 @@ export default function ProductDetails({route}) {
           <Comment/>
         </View>
       </ScrollView>
-      <ListAction product={item}/>
+      <ListAction product={item} />
     </>
   );
 }

@@ -11,7 +11,10 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
+import {deleteProductToCart,UpdateQuantityProductToCart} from '../../redux/actions/cart'
+import {useDispatch} from 'react-redux'
 export default function CartItem({item}) {
+  const dispatch = useDispatch()
   const product = item.product;
   const currentPrice = Intl.NumberFormat().format(
     product.price - (product.price * product.sale) / 100,
@@ -34,16 +37,33 @@ export default function CartItem({item}) {
           <Text style={styles.parentPrice}>{parentPrice} đ</Text>
         </View>
         <View style={styles.quantity}>
-          <TouchableOpacity style={styles.quantityDecrease}>
-            <Icon name="caret-back-circle-outline" size={24} color="black" />
+          <TouchableOpacity 
+            style={styles.quantityDecrease}
+            onPress={()=>{
+              dispatch(UpdateQuantityProductToCart(product,-1))
+            }}
+            disabled={item.quantity >1 ?false:true}
+            >
+            <Icon name="caret-back-circle-outline" size={24} color={item.quantity >1 ?"black" : "#999"}/>
           </TouchableOpacity>
           <Text style={styles.quantityNumber}>{item.quantity}</Text>
-          <TouchableOpacity style={styles.quantityIncrease}>
+          <TouchableOpacity 
+            style={styles.quantityIncrease}
+            onPress={()=>{
+              dispatch(UpdateQuantityProductToCart(product,1))
+            }}
+            
+            >
             <Icon name="caret-forward-circle-outline" size={24} color="black" />
           </TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity style={styles.deleteItem}>
+      <TouchableOpacity 
+          style={styles.deleteItem}
+          onPress={()=>{
+            dispatch(deleteProductToCart(product));
+          }}
+          >
         <Icon name="trash" size={24} color="black" />
       </TouchableOpacity>
     </View>
