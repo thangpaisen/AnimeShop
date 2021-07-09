@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text,StyleSheet } from 'react-native'
 
-const Details = () => {
+const Details = ({item}) => {
     return (
          <View style={styles.details}>
             <View style={styles.headerDetails}>
@@ -19,10 +19,8 @@ const Details = () => {
                   <Text style={{flex:1,fontSize: 16,color:'gray'}}>Gửi từ</Text>
                   <Text style={{flex:2,fontSize: 16,color:'gray'}}>Đà Nặng</Text>
                 </View>
-                <Text style={{fontSize: 16,color:'gray',marginTop:20}}>Móc khóa mica game Genshin Impact - Animal Cute Ver Kích thước: Khoảng 7.5cm (tính luôn móc nhỏ).
-                  Chất liệu: Mica.
-                  Móc khóa được in sắc nét , có lớp bảo vệ ở cả 2 mặt.
-                  Khi mua về nếu móc khóa bị trầy xước, các bạn lột lớp bảo vệ ra sẽ y như mới nhé ^^`
+                <Text style={{fontSize: 16,color:'gray',marginTop:20}}>
+                {item.description}
                 </Text>
               </View>
             </View>

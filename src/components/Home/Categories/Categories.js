@@ -16,7 +16,7 @@ const Categories = () => {
         horizontal
         data={dataCategories}
         renderItem={({item, index}) => <CategoryItem item={item} />}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item._id}
       />
     </View>
   );

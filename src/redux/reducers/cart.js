@@ -6,7 +6,7 @@ var initStateCart =[];
 const cart = (state = initStateCart, action) => {
   var product = action.payload;
   var quantity = action.quantity;
-  var index = state.findIndex(x => x.product.id === product.id)
+  var index = state.findIndex(x => x.product._id === product._id)
   switch (action.type) {
     case 'SET_DATA_CART':
       return [

@@ -11,7 +11,6 @@ import {
 import Header from './Header';
 import CartItem from './CartItem';
 import PayNow from './PayNow';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useDispatch, useSelector} from 'react-redux';
 import {getDataCart} from '../../redux/actions/cart'
 const NoProductCart = () => {
@@ -24,7 +23,6 @@ const NoProductCart = () => {
 export default function Cart() {
   const dispatch = useDispatch();
   const dataCart = useSelector(state => state.cart);
-  // console.log(dataCart);
   useEffect(() => {
     dispatch(getDataCart());
   }, [])

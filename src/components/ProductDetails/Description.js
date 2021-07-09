@@ -6,7 +6,7 @@ import {Rating} from 'react-native-elements';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
 export default function Description({item}) {
-    const currentPrice = Intl.NumberFormat().format(item.price - item.price *item.sale/100);
+    const currentPrice = Intl.NumberFormat().format(Math.floor((item.price - item.price *item.sale/100)/1000)*1000);
     const parentPrice = Intl.NumberFormat().format(item.price);
     return (
         <View style={styles.description}>

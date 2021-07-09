@@ -25,7 +25,7 @@ const NewProducts = () => {
         pagingEnabled
         data={dataProducts}
         renderItem={({item, index}) => <Product item={item} />}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item._id}
       />
     </View>
   );

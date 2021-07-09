@@ -42,7 +42,7 @@ export default function ProductDetails({route}) {
           <ListImage item={item}/>
           <Description item={item}/>
           <SelectSwatch />
-          <Details/>
+          <Details item={item}/>
           <Comment/>
         </View>
       </ScrollView>

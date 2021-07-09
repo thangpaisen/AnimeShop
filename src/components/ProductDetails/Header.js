@@ -1,9 +1,23 @@
 import React from 'react'
 import { StyleSheet, Text, View,Pressable } from 'react-native'
+import { Avatar, Badge, withBadge } from 'react-native-elements'
+
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import {useSelector} from 'react-redux'
 export default function Header() {
     const navigation = useNavigation();
+    const dataCart = useSelector(state => state.cart)
+    const showTotalQuantity = (dataCart) =>{
+      var total= 0;
+      if(dataCart.length >0)
+        {
+          for (let index = 0; index < dataCart.length; index++) {
+              total = dataCart[index].quantity + total;
+          }
+        }
+      return Intl.NumberFormat().format(total);
+  }
     return (
         <View style={styles.header}>
           <Pressable 
@@ -17,6 +31,7 @@ export default function Header() {
              onPress={()=>navigation.navigate('Cart')}
             >
             <Icon name="cart-outline" size={24} color="white" />
+            <Badge value={showTotalQuantity(dataCart)} status="error" containerStyle={{ position: 'absolute', top: -4, right:-4 }}/>
           </Pressable>
         </View>
     )

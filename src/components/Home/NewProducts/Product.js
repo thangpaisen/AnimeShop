@@ -18,9 +18,7 @@ const Product = ({item}) => {
   // console.log( typeof
   // item.price.toLocaleString()
   // );
-  const currentPrice = Intl.NumberFormat().format(
-    item.price - (item.price * item.sale) / 100,
-  );
+  const currentPrice = Intl.NumberFormat().format(Math.floor((item.price - item.price *item.sale/100)/1000)*1000);
   const parentPrice = Intl.NumberFormat().format(item.price);
   return (
     <Pressable

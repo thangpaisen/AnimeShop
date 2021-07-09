@@ -8,8 +8,13 @@ export const setProducts = (products)=>{
 }
 
 export const fetchProducts  = () => async (dispatch)=>{
-    const res = await axios.get('https://jsonplaceholder.typicode.com/users')
-    dispatch(setProducts(res.data));
+    try {
+        const res = await axios.get('http://localhost:3000/products')
+        dispatch(setProducts(res.data));
+    } catch (error) {
+        console.log("error",error)
+        
+    }
   }
 
 export const addNewProduct = (newProduct)=>{

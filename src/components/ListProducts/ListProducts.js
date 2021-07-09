@@ -14,7 +14,7 @@ export default function ListProducts({route}) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.main}>
           {dataProducts.map(item => (
-            <Product key={item.id} item={item} />
+            <Product key={item._id} item={item} />
           ))}
         </View>
       </ScrollView>

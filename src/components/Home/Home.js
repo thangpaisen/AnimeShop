@@ -10,7 +10,8 @@ import NetInfo from '@react-native-community/netinfo';
 import NetworkError from '../../Screens/NetworkError';
 const axios = require('axios');
 
-// import {fetchProducts} from '../../redux/actions/products';
+import {fetchProducts} from '../../redux/actions/products';
+import {fetchCategories} from '../../redux/actions/categories';
 // import {setProducts} from '../../redux/actions/products';
 import {useSelector,useDispatch } from 'react-redux'
 
@@ -31,10 +32,10 @@ const Home = ({navigation}) => {
   }, []);
   const dispatch = useDispatch()
   // const dataProducts = useSelector((state) => state.products)
-  // console.log(dataProducts)
   useEffect(() => {
-    // dispatch(fetchProducts());
-  },[])
+    dispatch(fetchProducts());
+    dispatch(fetchCategories());
+  },[refreshing])
   return (
     <>
       <Header navigation={navigation}/>
@@ -50,11 +51,6 @@ const Home = ({navigation}) => {
         <Figures />
       </ScrollView>}
     </>
-    // <View style={styles.container}>
-    //   {dataProducts.map((item,index) => 
-    //       <Text key={index}>{item.name}</Text>
-    //   )}
-    // </View>
   );
 };
 
