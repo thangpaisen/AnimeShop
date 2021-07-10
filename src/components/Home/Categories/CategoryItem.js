@@ -1,12 +1,17 @@
 import React from 'react'
 import { StyleSheet, Text, View,Dimensions,Image,Pressable} from 'react-native'
 import { useNavigation } from '@react-navigation/native';
+import {useSelector } from 'react-redux'
+
 const CategoryItem = ({item}) => {
     const navigation = useNavigation();
+    const  dataProducts = useSelector(state => state.products);
+    const result = dataProducts.filter ( ({ productType }) => productType === item.CategoryId);
+    // console.log(result);
     return (
         <Pressable 
             style={styles.container}
-            onPress={()=>navigation.navigate('ListProducts',{title:item.CategoryTitle})}
+            onPress={()=>navigation.navigate('ListProducts',{title:item.CategoryTitle, data:result})}
             > 
             <Image 
                 style={styles.image}

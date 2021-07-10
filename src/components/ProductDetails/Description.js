@@ -1,21 +1,17 @@
-import { Avatar } from 'react-native-elements'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Rating} from 'react-native-elements';
-import 'intl';
-import 'intl/locale-data/jsonp/en';
+import {formatNumber} from '../../../utils';
 export default function Description({item}) {
-    const currentPrice = Intl.NumberFormat().format(Math.floor((item.price - item.price *item.sale/100)/1000)*1000);
-    const parentPrice = Intl.NumberFormat().format(item.price);
     return (
         <View style={styles.description}>
             <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>
               {item.title}
             </Text>
             <View style={styles.price}>
-              <Text style={styles.currentPrice}>{currentPrice} đ</Text>
-              <Text style={styles.parentPrice}>{parentPrice} đ</Text>
+              <Text style={styles.currentPrice}>{formatNumber(item.priceNew)} đ</Text>
+              <Text style={styles.parentPrice}>{formatNumber(item.price)} đ</Text>
             </View>
             <View style={styles.ratting}>
               <Rating imageSize={16} readonly startingValue={5} />

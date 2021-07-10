@@ -13,7 +13,7 @@ export default function PayNow() {
       if(dataCart.length >0)
         {
           for (let index = 0; index < dataCart.length; index++) {
-              const currentPrice = dataCart[index].product.price - (dataCart[index].product.price * dataCart[index].product.sale) / 100
+              const currentPrice = Math.floor((dataCart[index].product.price - (dataCart[index].product.price * dataCart[index].product.sale) / 100)/1000)*1000
               total = currentPrice * dataCart[index].quantity + total;
           }
         }

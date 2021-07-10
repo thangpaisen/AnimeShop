@@ -1,3 +1,4 @@
+import {formatNumber} from '../../../utils';
 import React from 'react';
 import {
   StyleSheet,
@@ -10,16 +11,9 @@ import {
 } from 'react-native';
 import {Rating} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
-import 'intl';
-import 'intl/locale-data/jsonp/en';
+
 const Product = ({item}) => {
   const navigation = useNavigation();
-
-  // console.log( typeof
-  // item.price.toLocaleString()
-  // );
-  const currentPrice = Intl.NumberFormat().format(Math.floor((item.price - item.price *item.sale/100)/1000)*1000);
-  const parentPrice = Intl.NumberFormat().format(item.price);
   return (
     <Pressable
       onPress={() => navigation.navigate('ProductDetails', {item})}
@@ -54,9 +48,9 @@ const Product = ({item}) => {
         <Text style={styles.sold}>({item.sold})</Text>
       </View>
       <View style={styles.price}>
-        <Text style={styles.currentPrice}>{currentPrice} đ</Text>
+        <Text style={styles.currentPrice}>{formatNumber(item.priceNew)} đ</Text>
         {item.sale !== 0 ? (
-          <Text style={styles.parentPrice}>{parentPrice} đ</Text>
+          <Text style={styles.parentPrice}>{formatNumber(item.price)} đ</Text>
         ) : null}
       </View>
     </Pressable>
@@ -77,6 +71,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     borderRadius: 5,
     elevation: 1,
+    justifyContent: 'space-between'
   },
   image: {
     // backgroundColor:'green',

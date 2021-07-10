@@ -16,10 +16,12 @@ import {useDispatch} from 'react-redux'
 export default function CartItem({item}) {
   const dispatch = useDispatch()
   const product = item.product;
-  const currentPrice = Intl.NumberFormat().format(
-    product.price - (product.price * product.sale) / 100,
-  );
-  const parentPrice = Intl.NumberFormat().format(product.price);
+  // const currentPrice = Intl.NumberFormat().format(
+  //   product.price - (product.price * product.sale) / 100,
+  // );
+  // const parentPrice = Intl.NumberFormat().format(product.price);
+  const currentPrice = Intl.NumberFormat().format(Math.floor((product.price - product.price *product.sale/100)/1000)*1000);
+    const parentPrice = Intl.NumberFormat().format(product.price);
   return (
     <View style={styles.cartItem}>
       <Image

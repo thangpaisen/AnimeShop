@@ -2,22 +2,26 @@ import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Product from '../NewProducts/Product';
+import { useNavigation } from '@react-navigation/native';
 import {useSelector } from 'react-redux'
-
 const HotSales = () => {
+  const navigation = useNavigation();
   const dataProducts = useSelector(state => state.products);
+  dataProducts.sort((a, b) => (b.sale- a.sale));
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>😍 KHUYẾN MÃI SIÊU HOT!!!</Text>
-        <TouchableOpacity style={styles.showAll}>
+        <TouchableOpacity style={styles.showAll}
+          onPress={()=>navigation.navigate('ListProducts',{title:'😍 KHUYỄN MẠI SIÊU HOT!!!',data:dataProducts})}
+        >
           <Text style={{fontSize: 16, fontWeight: 'bold'}}>All</Text>
           <Icon name="chevron-forward-outline" size={20} color="black" />
         </TouchableOpacity>
       </View>
       <FlatList
         horizontal
-        pagingEnabled
+        // pagingEnabled
         data={dataProducts}
         renderItem={({item, index}) => <Product item={item} />}
         keyExtractor={item => item._id}
