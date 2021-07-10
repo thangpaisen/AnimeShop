@@ -4,25 +4,23 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {Button} from 'react-native-elements';
 import {useDispatch} from 'react-redux'
 import {addToCart} from '../../redux/actions/cart';
-export default function ListAction({product}) {
-  const dispatch = useDispatch()
-  const createTwoButtonAlert = () =>
-    Alert.alert(
-      "Thông Báo",
-      "Đã thêm vào giỏ hàng",
-    );
+export default function ListAction({product,handleOnAddToCart}) {
+  // const dispatch = useDispatch()
+  // const createTwoButtonAlert = () =>
+  //   Alert.alert(
+  //     "Thông Báo",
+  //     "Đã thêm vào giỏ hàng",
+  //   );
   return (
     <View style={styles.listAction}>
       <Button
+        disabled={product.quantity!=0?false:true}
         icon={<Icon style={styles.icon} name="cart" size={24} color="white" />}
         buttonStyle={styles.buttonAddCart}
         titleStyle={styles.buttonTitle}
-        title={'Thêm vào giỏ hàng'}
+        title={product.quantity!=0?'Thêm vào giỏ hàng':'Hết hàng'}
         onPress={()=>
-          {
-            dispatch(addToCart(product,1))
-            createTwoButtonAlert();
-          }
+          handleOnAddToCart()
         }
       />
     </View>
@@ -33,7 +31,7 @@ const styles = StyleSheet.create({
   //action
   listAction: {
     position: 'absolute',
-    bottom: 0,
+    bottom: 10,
     left: 0,
     right: 0,
   },

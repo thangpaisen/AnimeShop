@@ -6,7 +6,8 @@ var initStateCart =[];
 const cart = (state = initStateCart, action) => {
   var product = action.payload;
   var quantity = action.quantity;
-  var index = state.findIndex(x => x.product._id === product._id)
+  var model = action.model;
+  var index = state.findIndex(x => x.product._id === product._id && x.model === model)
   switch (action.type) {
     case 'SET_DATA_CART':
       return [
@@ -21,6 +22,7 @@ const cart = (state = initStateCart, action) => {
         state.push({
                 product ,
                 quantity,
+                model
               });
       }
       AsyncStorage.setItem('CART', JSON.stringify(state))

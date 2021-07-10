@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Button,
   Pressable,
-  Alert 
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 // import { useNavigation } from '@react-navigation/native';
@@ -20,33 +20,37 @@ import ListAction from './ListAction';
 import Details from './Details';
 import Comment from './Comment';
 import ListImage from './ListImage';
-
-import Modal from 'react-native-modal';
+import {useDispatch} from 'react-redux'
+import {addToCart} from '../../redux/actions/cart';
 
 export default function ProductDetails({route}) {
-  // const navigation = useNavigation();
-   const {item} = route.params;
-   const [isModalVisible, setModalVisible] = useState(false);
-
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+    const dispatch = useDispatch()
+    const [selected, setSelected] = useState(0)
+  const {item} = route.params;
+  const [isModalVisible, setModalVisible] = useState(false);
+  console.log(item.models[selected])
+  const createTwoButtonAlert = () =>
+    Alert.alert(
+      "Thông Báo",
+      "Đã thêm vào giỏ hàng",
+    );
+  const handleOnAddToCart = () => {
+    dispatch(addToCart(item,1,item.models[selected]))
+    createTwoButtonAlert();
+  }
   return (
     <>
       <Header />
-      <ScrollView 
-        style={styles.container} 
-        showsVerticalScrollIndicator={false} 
-          >
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.main}>
-          <ListImage item={item}/>
-          <Description item={item}/>
-          <SelectSwatch />
-          <Details item={item}/>
-          <Comment/>
+          <ListImage item={item} />
+          <Description item={item} />
+          {item.models.length !== 0 && <SelectSwatch models={item.models} selected={selected} setSelected={setSelected}/>}
+          <Details item={item} />
+          <Comment />
         </View>
       </ScrollView>
-      <ListAction product={item} />
+      <ListAction product={item} handleOnAddToCart={handleOnAddToCart} />
     </>
   );
 }
@@ -64,6 +68,4 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
     // backgroundColor: 'green',
   },
-
-  
 });

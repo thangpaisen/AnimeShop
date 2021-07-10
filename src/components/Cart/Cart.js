@@ -12,7 +12,6 @@ import Header from './Header';
 import CartItem from './CartItem';
 import PayNow from './PayNow';
 import {useDispatch, useSelector} from 'react-redux';
-import {getDataCart} from '../../redux/actions/cart'
 const NoProductCart = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -23,9 +22,6 @@ const NoProductCart = () => {
 export default function Cart() {
   const dispatch = useDispatch();
   const dataCart = useSelector(state => state.cart);
-  useEffect(() => {
-    dispatch(getDataCart());
-  }, [])
   return (
     <View style={styles.cartContainer}>
       <Header />

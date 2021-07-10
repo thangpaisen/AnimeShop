@@ -3,40 +3,11 @@ import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import FigureItem from './FigureItem';
-const data = [
-  {
-    id: 44,
-    title: 'Mô hình Nendoroid 1262 - Senku Ishigami - anime Dr. Stone',
-    image:
-      'https://product.hstatic.net/1000273792/product/47_81bbcad6c9e94ff8990202324575ff15_medium.jpg',
-    price: 350000,
-    sale: 12,
-    rate: 5,
-    sold: 999,
-  },
-  {
-    id: 45,
-    title: 'Mô hình Nendoroid 1334 - Zenitsu Agatsuma - anime Kimetsu no Yaiba',
-    image:
-      'https://product.hstatic.net/1000273792/product/f2_8e172c979bc84dd393fb55a809a2fc9f_medium.jpg',
-    price: 350000,
-    sale: 12,
-    rate: 5,
-    sold: 69,
-  },
-  {
-    id: 46,
-    title: 'Mô hình Tanjiro Kamado - anime Kimetsu no Yaiba',
-    image:
-      'https://product.hstatic.net/1000273792/product/f1a_6c1bef31e889479787956dc7d6e53df3_medium.jpg',
-    price: 230000,
-    sale: 0,
-    rate: 5,
-    sold: 69,
-  },
-];
+import {useSelector } from 'react-redux'
 const Figures = () => {
   const navigation = useNavigation();
+  const dataProducts = useSelector((state) => state.products);
+  const result = dataProducts.filter ( ({ productType }) => productType === "Figures");
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -47,7 +18,7 @@ const Figures = () => {
         </View>
         <TouchableOpacity 
           style={styles.showAll}
-          onPress={()=>navigation.navigate('ListProducts',{title:'😍 FIGURE - MÔ HÌNH'})}
+          onPress={()=>navigation.navigate('ListProducts',{title:'😍 FIGURE - MÔ HÌNH',data:result})}
           >
           <Text style={{fontSize: 16, fontWeight: 'bold'}}>All</Text>
           <Icon name="chevron-forward-outline" size={20} color="black" />
@@ -59,7 +30,9 @@ const Figures = () => {
         keyExtractor={item => item.id}
       /> */}
       {
-        data.map((item, index) =><FigureItem key={index} item={item} />)
+        result.map((item, index) =>   
+            index<3?<FigureItem key={index} item={item} />:null
+        )
       }
     </View>
   );

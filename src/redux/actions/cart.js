@@ -16,18 +16,20 @@ export const setDataCart =(data) => {
         payload:data,
     }
 }
-export const addToCart = (product,quantity) => {
+export const addToCart = (product,quantity,model) => {
     return {
         type:'ADD_TO_CART',
         payload:product,
         quantity,
+        model
     }
 }
 
-export const deleteProductToCart = (product) => {
+export const deleteProductToCart = (product,model) => {
     return {
         type:'DELETE_PRODUCT_TO_CART',
         payload:product,
+        model,
     }
 }
 

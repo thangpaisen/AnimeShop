@@ -1,31 +1,26 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React,{useState} from 'react'
+import { StyleSheet, Text, View ,Pressable,} from 'react-native'
 
-export default function SelectSwatch() {
+export default function SelectSwatch(props) {
+    // const [selected, setSelected] = useState(0)
+    const {models,selected,setSelected} = props
     return (
         <View style={styles.selectSwatch}>
             <View style={styles.headerSelect}>
               <Text style={styles.textHeaderSelect}>Chọn mẫu</Text>
             </View>
             <View style={styles.selectList}>
-              <View style={styles.selectItem}>
-                <Text style={styles.textItem}>Lôi</Text>
-              </View>
-              <View style={[styles.selectItem,styles.selectItemActive]}>
-                <Text style={styles.textItem}>Thủy</Text>
-              </View>
-              <View style={styles.selectItem}>
-                <Text style={styles.textItem}>Phong</Text>
-              </View>
-              <View style={styles.selectItem}>
-                <Text style={styles.textItem}>Nham</Text>
-              </View>
-              <View style={styles.selectItem}>
-                <Text style={styles.textItem}>Băng</Text>
-              </View>
-              <View style={styles.selectItem}>
-                <Text style={styles.textItem}>Thảo</Text>
-              </View>
+            {
+              models.map((item,index) => 
+                <Pressable 
+                  key={index}
+                  style={[styles.selectItem,index===selected && styles.selectItemActive]}
+                  onPress={()=>setSelected(index)}
+                  >
+                  <Text style={styles.textItem}>{item}</Text>
+                </Pressable>
+              )
+            }
             </View>
           </View>
     )
@@ -51,17 +46,16 @@ const styles = StyleSheet.create({
   selectItem: {
     marginRight: 10,
     marginTop: 10,
-    padding: 8,
+    padding: 6,
     borderWidth: 0.4,
     borderColor: '#999',
-    
-    borderRadius: 6,
-    elevation:1,
+    borderRadius: 4,
     backgroundColor:'white'
   },
   selectItemActive:{
+    borderRadius: 4,
     borderWidth: 2,
-    borderColor: 'red',
+    borderColor: 'black',
   },
   textItem: {
     fontSize: 16,

@@ -13,7 +13,7 @@ export default function Comment() {
 const styles = StyleSheet.create({
     commentContainer:{
         marginTop: 10,
-        marginBottom: 52,
+        marginBottom:65,
         paddingHorizontal:10,
         backgroundColor: 'white'
     },

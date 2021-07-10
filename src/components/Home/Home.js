@@ -12,6 +12,7 @@ const axios = require('axios');
 
 import {fetchProducts} from '../../redux/actions/products';
 import {fetchCategories} from '../../redux/actions/categories';
+import {getDataCart} from '../../redux/actions/cart'
 // import {setProducts} from '../../redux/actions/products';
 import {useSelector,useDispatch } from 'react-redux'
 
@@ -35,6 +36,8 @@ const Home = ({navigation}) => {
   useEffect(() => {
     dispatch(fetchProducts());
     dispatch(fetchCategories());
+    dispatch(getDataCart());
+    
   },[refreshing])
   return (
     <>

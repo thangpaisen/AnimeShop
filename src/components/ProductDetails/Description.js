@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Rating} from 'react-native-elements';
-import {formatNumber} from '../../../utils';
+import {formatNumber} from '../../utils';
 export default function Description({item}) {
     return (
         <View style={styles.description}>
@@ -14,7 +14,7 @@ export default function Description({item}) {
               <Text style={styles.parentPrice}>{formatNumber(item.price)} đ</Text>
             </View>
             <View style={styles.ratting}>
-              <Rating imageSize={16} readonly startingValue={5} />
+              <Rating imageSize={16} readonly startingValue={item.rate} />
               <Text style={styles.ratePoint}>{item.rate}</Text>
               <View style={styles.sold}>
                 <View

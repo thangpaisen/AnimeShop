@@ -38,12 +38,7 @@ const Product = ({item}) => {
       </Text>
       <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 5}}>
         <Text style={styles.ratting}>
-          <Rating
-            imageSize={16}
-            readonly
-            startingValue={5}
-            style={styles.ratting}
-          />
+          <Rating imageSize={16} readonly startingValue={item.rate} />
         </Text>
         <Text style={styles.sold}>({item.sold})</Text>
       </View>

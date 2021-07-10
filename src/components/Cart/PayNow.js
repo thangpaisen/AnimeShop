@@ -1,8 +1,8 @@
+import {formatNumber} from '../../utils';
+
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Button} from 'react-native-elements';
-import 'intl';
-import 'intl/locale-data/jsonp/en';
 import {useDispatch, useSelector} from 'react-redux';
 
 export default function PayNow() {
@@ -13,11 +13,10 @@ export default function PayNow() {
       if(dataCart.length >0)
         {
           for (let index = 0; index < dataCart.length; index++) {
-              const currentPrice = Math.floor((dataCart[index].product.price - (dataCart[index].product.price * dataCart[index].product.sale) / 100)/1000)*1000
-              total = currentPrice * dataCart[index].quantity + total;
+              total = dataCart[index].product.priceNew * dataCart[index].quantity + total;
           }
         }
-      return Intl.NumberFormat().format(total);
+      return formatNumber(total);
   }
   const showTotalQuantity = (dataCart) =>{
       var total= 0;

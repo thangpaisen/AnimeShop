@@ -1,3 +1,4 @@
+import {formatNumber} from '../../../utils';
 import React from 'react';
 import {
   StyleSheet,
@@ -10,17 +11,8 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {Rating} from 'react-native-elements';
-import 'intl';
-import 'intl/locale-data/jsonp/en';
 const FigureItem = ({item}) => {
   const navigation = useNavigation();
-  // console.log( typeof
-  // item.price.toLocaleString()
-  // );
-  const currentPrice = Intl.NumberFormat().format(
-    item.price - (item.price * item.sale) / 100,
-  );
-  const parentPrice = Intl.NumberFormat().format(item.price);
   return (
     <Pressable style={styles.container}
         onPress={()=>navigation.navigate('ProductDetails',{item})}
@@ -42,9 +34,9 @@ const FigureItem = ({item}) => {
           <Text style={styles.sold}>({item.sold})</Text>
         </View>
         <View style={styles.price}>
-          <Text style={styles.currentPrice}>{currentPrice} đ</Text>
+          <Text style={styles.currentPrice}>{formatNumber(item.priceNew)} đ</Text>
           {item.sale !== 0 ? (
-            <Text style={styles.parentPrice}>{parentPrice} đ</Text>
+            <Text style={styles.parentPrice}>{formatNumber(item.price)} đ</Text>
           ) : null}
         </View>
       </View>

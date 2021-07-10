@@ -9,7 +9,7 @@ const Details = ({item}) => {
               <View style={styles.contentDetails}>
                 <View style={styles.quantityRemain}>
                   <Text style={{flex:1,fontSize: 16,color:'gray'}}>Kho</Text>
-                  <Text style={{flex:2,fontSize: 16,color:'gray'}}>69</Text>
+                  <Text style={{flex:2,fontSize: 16,color:'gray'}}>{item.quantity}</Text>
                 </View>
                 <View style={styles.origin}>
                   <Text style={{flex:1,fontSize: 16,color:'gray'}}>Xuất xứ</Text>
