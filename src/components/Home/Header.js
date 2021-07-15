@@ -1,9 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View,TouchableOpacity,Pressable } from 'react-native'
 import { Avatar, Badge, withBadge } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons'
 import {useSelector} from 'react-redux'
-export default function Header({navigation}) {
+import {useNavigation} from '@react-navigation/native';
+
+export default function Header() {
+    const navigation = useNavigation();
     const dataCart = useSelector(state => state.cart)
     const showTotalQuantity = (dataCart) =>{
       var total= 0;
@@ -17,10 +20,13 @@ export default function Header({navigation}) {
   }
     return (
         <View style={styles.container}>
-            <View style={styles.headerSearch}>
+            <Pressable 
+                style={styles.headerSearch}
+                onPress={()=>navigation.navigate('SearchProducts')}
+                >
                 <Icon name="search-outline" size={24} color="#999"/>
                 <Text style={styles.textSearch}>Bạn tìm gì hôm nay?</Text>
-            </View>
+            </Pressable>
             <TouchableOpacity
                  onPress={()=>navigation.navigate('Cart')}
             >

@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Home from '../components/Home';
 import Cart from '../components/Cart';
 import Settings from '../Screens/Settings';
+import SearchProducts from '../Screens/SearchProducts';
+
 
 import ProductDetails from '../components/ProductDetails';
 import ListProducts from '../components/ListProducts';
@@ -20,6 +22,7 @@ const AppStack = () => {
         <Stack.Screen name="TabMenu" component={TabMenu} />
         <Stack.Screen name="ProductDetails" component={ProductDetails} />
         <Stack.Screen name="ListProducts" component={ListProducts} />
+        <Stack.Screen name="SearchProducts" component={SearchProducts} />
       </Stack.Navigator>
   );
 };

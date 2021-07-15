@@ -19,29 +19,31 @@ import {useSelector,useDispatch } from 'react-redux'
 const wait = timeout => {
   return new Promise(resolve => setTimeout(resolve, timeout));
 };
-const Home = ({navigation}) => {
+const Home = () => {
   const [netStatus, setNet] = useState(true);
+  const dispatch = useDispatch();
   useEffect(() => {
     NetInfo.addEventListener(state => {
       setNet(state.isConnected);
     });
   });
   const [refreshing, setRefreshing] = React.useState(false);
-  const onRefresh = React.useCallback(() => {
+  // const onRefresh = React.useCallback(() => {
+  //   setRefreshing(true);
+  //   wait(1000).then(() => setRefreshing(false));
+  // }, []);
+  const onRefresh = () => {
     setRefreshing(true);
-    wait(1000).then(() => setRefreshing(false));
-  }, []);
-  const dispatch = useDispatch()
-  // const dataProducts = useSelector((state) => state.products)
+  }
   useEffect(() => {
     dispatch(fetchProducts());
     dispatch(fetchCategories());
     dispatch(getDataCart());
-    
+    setRefreshing(false);
   },[refreshing])
   return (
     <>
-      <Header navigation={navigation}/>
+      <Header/>
      { !netStatus?<NetworkError/>:<ScrollView
         showsVerticalScrollIndicator={false}
         refreshControl={

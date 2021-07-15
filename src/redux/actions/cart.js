@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const getDataCart = () => async (dispatch) => {
   try {
     const jsonValue = await AsyncStorage.getItem('CART')
-    const data=  jsonValue != null ? JSON.parse(jsonValue) : null;
+    const data =  jsonValue != null ? JSON.parse(jsonValue) : null;
     dispatch(setDataCart(data))
   } catch(e) {
     console.log(e)
@@ -33,10 +33,11 @@ export const deleteProductToCart = (product,model) => {
     }
 }
 
-export const UpdateQuantityProductToCart = (product,quantity) => {
+export const UpdateQuantityProductToCart = (product,quantity,model) => {
     return {
         type:'UPDATE_QUANTITY_PRODUCT_TO_CART',
         payload:product,
         quantity,
+        model
     }
 }

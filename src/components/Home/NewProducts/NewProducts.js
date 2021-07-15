@@ -8,14 +8,15 @@ import {useSelector } from 'react-redux'
 const NewProducts = () => {
   const navigation = useNavigation();
   const dataProducts = useSelector((state) => state.products);
-  dataProducts.sort((a,b)=> (new Date(b.createdAt) - new Date(a.createdAt)));
+  const result = [...dataProducts].sort((a,b)=> (new Date(b.createdAt) - new Date(a.createdAt)));
+  console.log('1')
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>😍 HÀNG MỚI VỀ</Text>
         <TouchableOpacity 
           style={styles.showAll}
-          onPress={()=>navigation.navigate('ListProducts',{title:'😍 HÀNG MỚI VỀ',data:dataProducts})}
+          onPress={()=>navigation.navigate('ListProducts',{title:'😍 HÀNG MỚI VỀ',data:result})}
           >
           <Text style={{fontSize: 16, fontWeight: 'bold'}}>All</Text>
           <Icon name="chevron-forward-outline" size={20} color="black" />
@@ -24,7 +25,7 @@ const NewProducts = () => {
       <FlatList
         horizontal
         // pagingEnabled
-        data={dataProducts}
+        data={result}
         renderItem={({item, index}) => <Product item={item} />}
         keyExtractor={item => item._id}
       />
@@ -38,7 +39,6 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 10,
     padding: 5,
-    // backgroundColor:'red'
   },
   header: {
     padding: 5,
