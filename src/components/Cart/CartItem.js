@@ -10,8 +10,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import 'intl';
-import 'intl/locale-data/jsonp/en';
 import {
   deleteProductToCart,
   UpdateQuantityProductToCart,
@@ -71,7 +69,7 @@ export default function CartItem({item}) {
           <TouchableOpacity
             style={styles.quantityIncrease}
             onPress={() => {
-              dispatch(UpdateQuantityProductToCart(product, 1,model));
+              dispatch(UpdateQuantityProductToCart(product,1,model));
             }}>
             <Icon name="caret-forward-circle-outline" size={24} color="black" />
           </TouchableOpacity>

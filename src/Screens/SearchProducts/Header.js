@@ -1,30 +1,37 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {StyleSheet, Text, View, Pressable, TextInput,TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-
-import {Input,SearchBar} from 'react-native-elements';
+import {fetchProductsSearch} from '../../redux/actions/productsSearch';
+import {addItemSearch} from '../../redux/actions/historySearch';
+import {useDispatch} from 'react-redux'
 const Header = () => {
     const navigation = useNavigation();
-    const [value, onChangeText] = useState('')
+    const dispatch = useDispatch();
+    const [value, onChangeText] = useState('');
   return (
     <View style={styles.container}>
-            <View style={styles.contaiSearch}>
+            <View style={styles.containerSearch}>
                 <Icon style={{ padding: 5 }} name="search-outline" size={25} color="#000" />
                 <TextInput
-                    // underlineColorAndroid='transparent'
-                    onChangeText={onChangeText}
+                    onChangeText={(text) =>{
+                        onChangeText(text);
+                    }}
+                    onSubmitEditing={() =>{
+                        if(value!=='')
+                        {
+                        dispatch(fetchProductsSearch(value));
+                        navigation.navigate('SearchProductsOK',{value:value})
+                         dispatch(addItemSearch(value));
+                        }
+                    }}
                     value={value}
-                    // multiline
-                    // blurOnSubmit
-                    // onSubmitEditing={_Onhandlersubmit}
                     style={{ flex: 1, paddingVertical: 5, fontFamily: 'Nunito-Bold', }} placeholder="Bạn tìm gì hôm nay?"></TextInput>
                 {
                     value !== '' ? (
                         <TouchableOpacity
                             onPress={() => {
                                 onChangeText('')
-                                // setistoggle(true)
                             }}
                         >
                             <Icon style={{ padding: 5 }} name="close-outline" size={15} color="#000" />
@@ -51,7 +58,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#09bff2'
 
     },
-    contaiSearch: {
+    containerSearch: {
         flex:1,
         flexDirection: 'row',
         justifyContent: 'center',

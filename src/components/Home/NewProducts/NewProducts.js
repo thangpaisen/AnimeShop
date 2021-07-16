@@ -9,7 +9,6 @@ const NewProducts = () => {
   const navigation = useNavigation();
   const dataProducts = useSelector((state) => state.products);
   const result = [...dataProducts].sort((a,b)=> (new Date(b.createdAt) - new Date(a.createdAt)));
-  console.log('1')
   return (
     <View style={styles.container}>
       <View style={styles.header}>

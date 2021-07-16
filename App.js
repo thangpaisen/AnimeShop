@@ -32,7 +32,7 @@
 //           headerShown: false,
 //         }}>
 //         <Stack.Screen name="LoginScreen" component={LoginScreen} />
-//         <Stack.Screen name="SignupScreen" component={SignupScreen} />   
+//         <Stack.Screen name="SignupScreen" component={SignupScreen} />
 //         <Stack.Screen name="TabMenu" component={TabMenu} />
 //         <Stack.Screen name="ProductDetails" component={ProductDetails} />
 //         <Stack.Screen name="ListProducts" component={ListProducts} />
@@ -86,12 +86,17 @@
 
 // const styles = StyleSheet.create({});
 
-
 import React from 'react';
+import Toast from 'react-native-toast-message';
 import Providers from './src/navigation';
 
 const App = () => {
-  return <Providers />;
-}
+  return (
+    <>
+      <Providers />
+      <Toast ref={ref => Toast.setRef(ref)} />
+    </>
+  );
+};
 
 export default App;

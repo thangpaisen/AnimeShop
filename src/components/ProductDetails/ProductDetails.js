@@ -12,7 +12,7 @@ import {
   Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-// import { useNavigation } from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 import Header from './Header';
 import Description from './Description';
 import SelectSwatch from './SelectSwatch';
@@ -28,7 +28,7 @@ export default function ProductDetails({route}) {
     const [selected, setSelected] = useState(0)
   const {item} = route.params;
   const [isModalVisible, setModalVisible] = useState(false);
-  console.log(item.models[selected])
+  // console.log(item.models[selected])
   const createTwoButtonAlert = () =>
     Alert.alert(
       "Thông Báo",
@@ -36,7 +36,10 @@ export default function ProductDetails({route}) {
     );
   const handleOnAddToCart = () => {
     dispatch(addToCart(item,1,item.models[selected]))
-    createTwoButtonAlert();
+    Toast.show({
+      text1: 'Đã thêm vào giỏ hàng',
+      visibilityTime: 100,
+    });
   }
   return (
     <>

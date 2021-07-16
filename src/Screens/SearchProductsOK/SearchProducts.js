@@ -1,21 +1,30 @@
 import React,{useState} from 'react';
 import {StyleSheet, Text, View, Pressable,TextInput,ScrollView} from 'react-native';
 import Header from './Header';
-import HistorySearch from './HistorySearch';
-import SearchTrending from './SearchTrending';
-
 import Product from '../../components/Home/NewProducts/Product';
 import {useSelector} from 'react-redux'
 const SearchProducts = () => {
-  const historySearch = useSelector(state => state.historySearch)
+  const data = useSelector(state => state.productsSearch)
   return (
     <View style={styles.container}>
         <Header/>
         {
-          historySearch.length!==0 ?
-          <HistorySearch/>:null
+        // data.length == 0 ? 
+        // (
+        //     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        //     <Text>Không có sản phẩm nào cả Ahihi</Text>
+        //     </View>
+        // ) : 
+        (
+            <ScrollView showsVerticalScrollIndicator={false}>
+            <View style={styles.main}>
+                {data.map(item => (
+                <Product key={item._id} item={item} />
+                ))}
+            </View>
+            </ScrollView>
+        )
         }
-        <SearchTrending/>
     </View>
   );
 };
@@ -25,7 +34,6 @@ export default SearchProducts;
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#fff'
   },
   main: {
     padding: 5,

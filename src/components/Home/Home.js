@@ -13,6 +13,7 @@ const axios = require('axios');
 import {fetchProducts} from '../../redux/actions/products';
 import {fetchCategories} from '../../redux/actions/categories';
 import {getDataCart} from '../../redux/actions/cart'
+import {getDataHistorySearch} from '../../redux/actions/historySearch'
 // import {setProducts} from '../../redux/actions/products';
 import {useSelector,useDispatch } from 'react-redux'
 
@@ -28,10 +29,6 @@ const Home = () => {
     });
   });
   const [refreshing, setRefreshing] = React.useState(false);
-  // const onRefresh = React.useCallback(() => {
-  //   setRefreshing(true);
-  //   wait(1000).then(() => setRefreshing(false));
-  // }, []);
   const onRefresh = () => {
     setRefreshing(true);
   }
@@ -39,6 +36,8 @@ const Home = () => {
     dispatch(fetchProducts());
     dispatch(fetchCategories());
     dispatch(getDataCart());
+    dispatch(getDataHistorySearch());
+
     setRefreshing(false);
   },[refreshing])
   return (

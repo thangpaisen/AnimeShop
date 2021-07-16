@@ -4,7 +4,8 @@ import { Avatar, Badge, withBadge } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons'
 import {useSelector} from 'react-redux'
 import {useNavigation} from '@react-navigation/native';
-
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 export default function Header() {
     const navigation = useNavigation();
     const dataCart = useSelector(state => state.cart)

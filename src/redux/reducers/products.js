@@ -6,7 +6,6 @@ const initStateProducts = [
 const products = (state = initStateProducts, action) => {
   switch (action.type) {
     case 'SET_PRODUCTS':
-      // Toast.show('Hello World!');
       return [
           ...action.payload,
       ];

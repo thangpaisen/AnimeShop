@@ -6,7 +6,7 @@ import Home from '../components/Home';
 import Cart from '../components/Cart';
 import Settings from '../Screens/Settings';
 import SearchProducts from '../Screens/SearchProducts';
-
+import SearchProductsOK from '../Screens/SearchProductsOK';
 
 import ProductDetails from '../components/ProductDetails';
 import ListProducts from '../components/ListProducts';
@@ -23,6 +23,7 @@ const AppStack = () => {
         <Stack.Screen name="ProductDetails" component={ProductDetails} />
         <Stack.Screen name="ListProducts" component={ListProducts} />
         <Stack.Screen name="SearchProducts" component={SearchProducts} />
+        <Stack.Screen name="SearchProductsOK" component={SearchProductsOK} />
       </Stack.Navigator>
   );
 };

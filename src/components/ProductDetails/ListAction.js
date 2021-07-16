@@ -5,12 +5,6 @@ import {Button} from 'react-native-elements';
 import {useDispatch} from 'react-redux'
 import {addToCart} from '../../redux/actions/cart';
 export default function ListAction({product,handleOnAddToCart}) {
-  // const dispatch = useDispatch()
-  // const createTwoButtonAlert = () =>
-  //   Alert.alert(
-  //     "Thông Báo",
-  //     "Đã thêm vào giỏ hàng",
-  //   );
   return (
     <View style={styles.listAction}>
       <Button
