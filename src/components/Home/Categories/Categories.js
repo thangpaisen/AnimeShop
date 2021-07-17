@@ -1,22 +1,28 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import CategoryItem from './CategoryItem'
-import {useSelector } from 'react-redux'
-
+import CategoryItem from './CategoryItem';
+import {useSelector} from 'react-redux';
+import Loading from '../../../Screens/Loading';
 const Categories = () => {
-  const dataCategories = useSelector((state) => state.categories)
+  const dataCategories = useSelector(state => state.categories.data);
+  const loading = useSelector(state => state.categories.loading);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>😍 DANH MỤC SẢN PHẨM</Text>
       </View>
-      <FlatList
-        horizontal
-        data={dataCategories}
-        renderItem={({item, index}) => <CategoryItem item={item} />}
-        keyExtractor={item => item._id}
-      />
+      {loading ? (
+        <Loading />
+      ) : (
+        <FlatList
+          horizontal
+          data={dataCategories}
+          renderItem={({item, index}) => <CategoryItem item={item} />}
+          keyExtractor={item => item._id}
+        />
+      )}
     </View>
   );
 };
@@ -40,4 +46,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-

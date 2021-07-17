@@ -2,15 +2,19 @@ import React,{useState} from 'react';
 import {StyleSheet, Text, View, Pressable,TextInput,ScrollView} from 'react-native';
 import Header from './Header';
 import Product from '../../components/Home/NewProducts/Product';
+import Loading from '../../Screens/Loading';
+
 import {useSelector} from 'react-redux'
 const SearchProductsOK = ({route}) => {
   const {value} = route.params;
-  const data = useSelector(state => state.productsSearch)
+  const {data,loading} = useSelector(state => state.productsSearch)
   return (
     <View style={styles.container}>
         <Header value={value}/>
         {
-        data.length == 0 ? 
+          loading?<Loading/>
+          :
+        data.length === 0 ? 
         (
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <Text>Không có sản phẩm nào cả Ahihi</Text>

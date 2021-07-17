@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const getDataHistorySearch = () => async (dispatch) => {
   try {
     const jsonValue = await AsyncStorage.getItem('HISTORY_SEARCH')
-    const data =  jsonValue != null ? JSON.parse(jsonValue) : null;
+    const data =  jsonValue != null ? JSON.parse(jsonValue) : [];
     dispatch(setDataHistorySearch(data))
   } catch(e) {
     console.log(e)

@@ -3,10 +3,14 @@ import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import FigureItem from './FigureItem';
-import {useSelector } from 'react-redux'
+import {useSelector } from 'react-redux';
+import Loading from '../../../Screens/Loading';
+
 const Figures = () => {
   const navigation = useNavigation();
-  const dataProducts = useSelector((state) => state.products);
+  const dataProducts = useSelector((state) => state.products.data);
+  const loading = useSelector(state => state.products.loading);
+
   const result = dataProducts.filter ( ({ productType }) => productType === "Figures");
   return (
     <View style={styles.container}>
@@ -24,16 +28,11 @@ const Figures = () => {
           <Icon name="chevron-forward-outline" size={20} color="black" />
         </TouchableOpacity>
       </View>
-      {/* <FlatList
-        data={data}
-        renderItem={({item, index}) => <FigureItem item={item} />}
-        keyExtractor={item => item.id}
-      /> */}
-      {
+      {loading ?
+        <Loading />:
         result.map((item, index) =>   
             index<3?<FigureItem key={index} item={item} />:null
-        )
-      }
+        )}
     </View>
   );
 };

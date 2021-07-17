@@ -1,16 +1,24 @@
 const axios = require('axios');
+import axiosConfig from '../../../axiosConfig' ;
 
-export const setProductsSearch = (products)=>{
+export const setProductsSearchLoading = (products)=>{
     return {
-        type:'SET_PRODUCTS_SEARCH',
-        payload:products,
+        type:'SET_PRODUCTS_SEARCH_LOADING'
     }
 }
 
+export const setProductsSearchSuccess = (products)=>{
+    return {
+        type:'SET_PRODUCTS_SEARCH_SUCCESS',
+        payload:products,
+    }
+}
 export const fetchProductsSearch  = (value) => async (dispatch)=>{
     try {
-        const res = await axios.get(`http://localhost:3000/products/Search/${value}`)
-        dispatch(setProductsSearch(res.data));
+        dispatch(setProductsSearchLoading());
+        const res = await axiosConfig.get(`/products/Search/${value}`)
+        dispatch(setProductsSearchSuccess(res.data));
+        console.log('res.data',res.data);
     } catch (error) {
         console.log("error",error)
         

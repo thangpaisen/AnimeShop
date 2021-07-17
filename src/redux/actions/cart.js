@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const getDataCart = () => async (dispatch) => {
   try {
     const jsonValue = await AsyncStorage.getItem('CART')
-    const data =  jsonValue != null ? JSON.parse(jsonValue) : null;
+    const data =  jsonValue != null ? JSON.parse(jsonValue) : [];
     dispatch(setDataCart(data))
   } catch(e) {
     console.log(e)

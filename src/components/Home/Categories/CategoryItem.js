@@ -5,7 +5,7 @@ import {useSelector } from 'react-redux'
 
 const CategoryItem = ({item}) => {
     const navigation = useNavigation();
-    const  dataProducts = useSelector(state => state.products);
+    const  dataProducts = useSelector(state => state.products.data);
     const result = dataProducts.filter ( ({ productType }) => productType === item.CategoryId);
     return (
         <Pressable 
