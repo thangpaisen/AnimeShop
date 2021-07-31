@@ -43,7 +43,7 @@ const FigureItem = ({item}) => {
       <ImageBackground
         style={styles.image}
         source={{
-          uri: item.image,
+          uri: item.image[0],
         }}>
         {item.sale !== 0 ? (
           <ImageBackground

@@ -21,7 +21,7 @@ const Product = ({item}) => {
       <Image
         style={styles.image}
         source={{
-          uri: item.image,
+          uri: item.image[0],
         }}
       />
       {item.sale !== 0 ? (

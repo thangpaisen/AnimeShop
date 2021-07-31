@@ -30,7 +30,7 @@ export default function CartItem({item}) {
         <Image
           style={styles.image}
           source={{
-            uri: product.image,
+            uri: product.image[0],
           }}
         />
       </Pressable>

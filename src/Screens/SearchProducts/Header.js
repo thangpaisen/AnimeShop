@@ -18,7 +18,7 @@ const Header = () => {
                         onChangeText(text);
                     }}
                     onSubmitEditing={() =>{
-                        if(value!=='')
+                        if(value.trim()!=='')
                         {
                         dispatch(fetchProductsSearch(value));
                         navigation.navigate('SearchProductsOK',{value:value})
@@ -40,7 +40,7 @@ const Header = () => {
                 }
             </View>
             <Pressable
-                onPress={()=>navigation.goBack()}
+                onPress={()=>navigation.navigate('Home')}
             >
                 <Text style={styles.txtCancel}>Cancel</Text>
             </Pressable>

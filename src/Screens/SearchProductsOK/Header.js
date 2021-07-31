@@ -12,7 +12,7 @@ const Header = ({value}) => {
             <Pressable 
                 style={styles.containerSearch}
                     onPress={()=>{
-                        navigation.goBack();
+                        navigation.navigate('SearchProducts');
                         dispatch(fetchProductsSearch('@'))
                     }}
                 >
@@ -25,7 +25,7 @@ const Header = ({value}) => {
             </Pressable>
             <Pressable
                 onPress={()=>{
-                    navigation.goBack();
+                    navigation.navigate('SearchProducts');
                     dispatch(fetchProductsSearch('@'))
                 }}
             >
