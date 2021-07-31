@@ -1,10 +1,12 @@
 import React,{useContext,useState} from 'react';
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity,ImageBackground,StatusBar,Pressable} from 'react-native';
 import {Input, Button, SocialIcon} from 'react-native-elements';
 import image from '../assets/image/logo3.png';
 import logo2 from '../assets/image/logo2.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
+import * as Animatable from 'react-native-animatable';
+import imgBr from '../assets/image/t4.png';
 
 import {AuthContext} from '../navigation/AuthProvider';
 import {useDispatch} from 'react-redux';
@@ -14,22 +16,26 @@ export default function SignupScreen({navigation}) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [name, setName] = useState();
-  
-  const [confirmPassword, setConfirmPassword] = useState();
+  const [secureTextEntry, setSecureTextEntry] = useState(true)
 
+// dispatch(registerUser(email,password));
   // const {register} = useContext(AuthContext);
   const dispatch = useDispatch()
 
   return (
-    <View style={styles.loginContainer}>
-      <View style={styles.main}>
-        <Text style={styles.footerTitle}>Welcome AnimeShop</Text>
-        <Text style={styles.footerTitle2}>Đăng kí tài khoản</Text>
+    <ImageBackground  style={styles.loginContainer} source={imgBr} resizeMode="cover">
+      <StatusBar backgroundColor="transparent" barStyle="light-content" translucent={true} />
+      <View style={{flex:2}}></View>
+      <Animatable.View style={styles.main} animation="fadeInUp">   
+        <View style={styles.title}>
+          <Text style={styles.footerTitle}>Create an account</Text>
+          <Text style={styles.footerTitle2}>Đăng ký tài khoản</Text>
+        </View>
         <View style={styles.action}>
-          <Input
-            label="User Name"
+        <Input
+            label="Name"
             labelStyle={{fontWeight: '500', fontSize: 16}}
-            placeholder="Nhập username vào...."
+            placeholder="Nhập tên vào...."
             leftIcon={<Icon name="person" size={20} color="gray" />}
             rightIcon={
               <Icon
@@ -38,104 +44,137 @@ export default function SignupScreen({navigation}) {
                 color="green"
               />
             }
-            // containerStyle={{backgroundColor:'red'}}
-            inputContainerStyle={{borderBottomWidth: 0.5}}
-            errorStyle={{color: 'red', marginLeft: 0}}
-             errorMessage=''
-             onChangeText={setEmail}
-          />
-          <Input
-            label="Password"
-            secureTextEntry={false}
-            labelStyle={{fontWeight: '500', fontSize: 16}}
-            placeholder="Nhập Password vào...."
-            leftIcon={<Icon name="lock-closed" size={20} color="gray" />}
-            rightIcon={<Icon name="eye-off" size={20} color="gray" />}
-            // containerStyle={{backgroundColor:'red'}}
+            style={{
+              fontSize: 16,
+              borderWidth: 0,
+              borderBottomColor: 'transparent',
+            }}
             inputContainerStyle={{borderBottomWidth: 0.5}}
             errorStyle={{color: 'red', marginLeft: 0}}
             errorMessage=''
-             onChangeText={setPassword}
-
+            onChangeText={setName}
           />
+          <Input
+            label="Email"
+            labelStyle={{fontWeight: '500', fontSize: 16}}
+            placeholder="Nhập Email vào...."
+            leftIcon={<Icon name="mail" size={20} color="gray" />}
+            rightIcon={
+              <Icon
+                name="chevron-down-circle-outline"
+                size={20}
+                color="green"
+              />
+            }
+            style={{
+              fontSize: 16,
+              borderWidth: 0,
+              borderBottomColor: 'transparent',
+            }}
+            inputContainerStyle={{borderBottomWidth: 0.5}}
+            errorStyle={{color: 'red', marginLeft: 0}}
+            errorMessage=''
+            onChangeText={setEmail}
+          />
+          <Input
+            label="Password"
+            secureTextEntry={secureTextEntry}
+            labelStyle={{fontWeight: '500', fontSize: 16}}
+            placeholder="Nhập Password vào...."
+            leftIcon={<Icon name="lock-closed" size={20} color="gray" />}
+            rightIcon={<Pressable onPress={()=>setSecureTextEntry(!secureTextEntry)}>
+                  <Icon name={secureTextEntry?"eye-off-outline":"eye-outline"} size={20} color="gray" />
+                </Pressable>
+              }
+            style={{
+              fontSize: 16,
+              borderWidth: 0,
+              borderBottomColor: 'transparent',
+            }}
+            inputContainerStyle={{borderBottomWidth: 0.5}}
+            errorStyle={{color: 'red', marginLeft: 0}}
+            errorMessage=''
+            onChangeText={setPassword}
+          />
+          
         </View>
         <Button
           title="Đăng ký"
           titleStyle={{color:'#333'}}
-          containerStyle={{
-            borderRadius: 20,
-            marginHorizontal: 10,
-          }}
+          containerStyle={{borderRadius: 20,marginHorizontal:10,}}
           buttonStyle={{backgroundColor: '#5cfff2'}}
-          ViewComponent={LinearGradient}
+          ViewComponent={LinearGradient} 
           linearGradientProps={{
             start:{x: 0, y: 0},
             end:{x: 1, y: 0},
             colors:['#5cfff2', '#09d6c6']
           }}
           onPress={()=>{
-            console.log(email,password);
-            dispatch(registerUser(email,password));
-            // navigation.navigate('LoginScreen')
-          }}
+             dispatch(registerUser(email,password))
+            }}
         />
         <View style={styles.signup}>
-          <Text style={{fontSize: 14}}>Bạn đã có tài khoản?</Text>
-          <TouchableOpacity
-            onPress={()=>navigation.navigate('LoginScreen')}
-          >
-            <Text style={styles.signupNow}>Đăng nhập ngay</Text>
-          </TouchableOpacity>
+            <Text style={{fontSize: 14}} >
+                Bạn đã có tài khoản?
+            </Text>
+            <TouchableOpacity 
+              onPress={()=>navigation.navigate('LoginScreen')}
+            >
+                <Text style={styles.signupNow}>Đăng nhập ngay</Text>
+            </TouchableOpacity>
         </View>
-      </View>
-    </View>
+      </Animatable.View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
-    backgroundColor: '#5cfff2',
     justifyContent: 'center',
+    
   },
   main: {
+    flex: 5,
     backgroundColor: 'white',
-    padding: 10,
-    paddingVertical: 30,
-    justifyContent: 'center',
-    marginHorizontal: 20,
-    borderRadius: 20,
-    elevation: 5,
+    padding: 20,
+    borderTopLeftRadius:40,
+    borderTopRightRadius:40,
+    elevation:1,
+    justifyContent: 'space-between',
+  },
+  title:{
+    marginTop:20,
   },
   footerTitle: {
-    marginTop: 10,
+    marginLeft:10,
     fontSize: 24,
     fontWeight: 'bold',
-    textAlign: 'center',
+    // textAlign: 'center',
   },
   footerTitle2: {
+    paddingVertical:10,
+    marginLeft:10,
     color: 'gray',
-    textAlign: 'center',
+    // textAlign: 'center',
   },
   action: {
-    marginTop: 40,
+    // marginTop: 40,
   },
-  loginUsingMedia: {
+  loginUsingMedia:{
     //   backgroundColor: 'red',
-    flexDirection: 'row',
-    justifyContent: 'center',
+      flexDirection: 'row',
+      justifyContent: 'center',
   },
-  signup: {
-    padding: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+  signup:{
+      padding:10,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
   },
-  signupNow: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#1394f0',
-    textDecorationLine: 'underline',
-    paddingHorizontal: 10,
-  },
+  signupNow:{
+      fontSize: 14, fontWeight: 'bold', color:'#1394f0',
+       textDecorationLine: 'underline',
+       paddingHorizontal: 10,
+  }
 });

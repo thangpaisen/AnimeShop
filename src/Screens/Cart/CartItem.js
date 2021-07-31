@@ -17,7 +17,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 
-export default function CartItem({item}) {
+export default function CartItem({item,handleOnPressDelete}) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const product = item.product;
@@ -78,7 +78,8 @@ export default function CartItem({item}) {
       <TouchableOpacity
         style={styles.deleteItem}
         onPress={() => {
-          dispatch(deleteProductToCart(product,model));
+          handleOnPressDelete(product,model);
+          // dispatch(deleteProductToCart(product,model));
         }}>
         <Icon name="trash" size={24} color="black" />
       </TouchableOpacity>

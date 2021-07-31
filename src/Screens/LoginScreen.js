@@ -1,29 +1,35 @@
 import React,{useContext,useState} from 'react';
-import {StyleSheet, Text, View, Image,TouchableOpacity,Alert} from 'react-native';
+import {StyleSheet, Text, View, Image,TouchableOpacity,Alert,ImageBackground,StatusBar,Pressable } from 'react-native';
 import {Input, Button, SocialIcon} from 'react-native-elements';
 import image from '../assets/image/logo3.png';
 import logo2 from '../assets/image/logo2.png';
+import imgBr from '../assets/image/t4.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import {useDispatch} from 'react-redux';
 import {loginUser} from '../redux/actions/user'
+import * as Animatable from 'react-native-animatable';
 // import {AuthContext} from '../navigation/AuthProvider';
 export default function LoginScreen({navigation}) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const dispatch = useDispatch()
-  // const {login,fbLogin} = useContext(AuthContext);
+  const [secureTextEntry, setSecureTextEntry] = useState(true)
   return (
-    <View style={styles.loginContainer}>
-      <View style={styles.main}>   
-        <Text style={styles.footerTitle}>Welcome AnimeShop</Text>
-        <Text style={styles.footerTitle2}>Đăng nhập tài khoản</Text>
+    <ImageBackground  style={styles.loginContainer} source={imgBr} resizeMode="cover">
+      <StatusBar backgroundColor="transparent" barStyle="light-content" translucent={true} />
+      <View style={{flex:3}}></View>
+      <Animatable.View style={styles.main} animation="fadeInUp">   
+        <View style={styles.title}>
+          <Text style={styles.footerTitle}>Welcome AnimeShop</Text>
+          <Text style={styles.footerTitle2}>Đăng nhập tài khoản</Text>
+        </View>
         <View style={styles.action}>
           <Input
-            label="User Name"
+            label="Email"
             labelStyle={{fontWeight: '500', fontSize: 16}}
-            placeholder="Nhập username vào...."
-            leftIcon={<Icon name="person" size={20} color="gray" />}
+            placeholder="Nhập Email vào...."
+            leftIcon={<Icon name="mail" size={20} color="gray" />}
             rightIcon={
               <Icon
                 name="chevron-down-circle-outline"
@@ -32,7 +38,7 @@ export default function LoginScreen({navigation}) {
               />
             }
             style={{
-              fontSize: 18,
+              fontSize: 16,
               borderWidth: 0,
               borderBottomColor: 'transparent',
             }}
@@ -44,13 +50,16 @@ export default function LoginScreen({navigation}) {
           />
           <Input
             label="Password"
-            secureTextEntry={true}
+            secureTextEntry={secureTextEntry}
             labelStyle={{fontWeight: '500', fontSize: 16}}
             placeholder="Nhập Password vào...."
             leftIcon={<Icon name="lock-closed" size={20} color="gray" />}
-            rightIcon={<Icon name="eye-off" size={20} color="gray" />}
+            rightIcon={<Pressable onPress={()=>setSecureTextEntry(!secureTextEntry)}>
+                  <Icon name={secureTextEntry?"eye-off-outline":"eye-outline"} size={20} color="gray" />
+                </Pressable>
+              }
             style={{
-              fontSize: 18,
+              fontSize: 16,
               borderWidth: 0,
               borderBottomColor: 'transparent',
             }}
@@ -61,7 +70,7 @@ export default function LoginScreen({navigation}) {
             onChangeText={setPassword}
           />
         </View>
-          <Button
+        <Button
           title="Đăng nhập"
           titleStyle={{color:'#333'}}
           containerStyle={{borderRadius: 20,marginHorizontal:10,}}
@@ -87,40 +96,42 @@ export default function LoginScreen({navigation}) {
                 <Text style={styles.signupNow}>Đăng ký ngay</Text>
             </TouchableOpacity>
         </View>
-      </View>
-    </View>
+      </Animatable.View>
+    </ImageBackground>
   );
 }
 const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
-    backgroundColor: '#5cfff2',
-    // backgroundColor: 'white',
     justifyContent: 'center',
     
   },
   main: {
+    flex: 5,
     backgroundColor: 'white',
-    padding: 10,
-    paddingVertical:30,
-    justifyContent: 'center',
-    // paddingHorizontal: 20,
-    marginHorizontal:20,
-    borderRadius:20,
-    elevation:5
+    padding: 20,
+    borderTopLeftRadius:40,
+    borderTopRightRadius:40,
+    elevation:1,
+    justifyContent: 'space-between',
+  },
+  title:{
+    marginTop:20,
   },
   footerTitle: {
-    marginTop: 10,
+    marginLeft:10,
     fontSize: 24,
     fontWeight: 'bold',
-    textAlign: 'center',
+    // textAlign: 'center',
   },
   footerTitle2: {
+    paddingVertical:10,
+    marginLeft:10,
     color: 'gray',
-    textAlign: 'center',
+    // textAlign: 'center',
   },
   action: {
-    marginTop: 40,
+    // marginTop: 40,
   },
   loginUsingMedia:{
     //   backgroundColor: 'red',
