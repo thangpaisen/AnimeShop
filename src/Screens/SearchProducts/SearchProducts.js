@@ -4,7 +4,7 @@ import Header from './Header';
 import HistorySearch from './HistorySearch';
 import SearchTrending from './SearchTrending';
 
-import Product from '../../components/Home/NewProducts/Product';
+import Product from '../Home/NewProducts/Product';
 import {useSelector} from 'react-redux'
 const SearchProducts = () => {
   const historySearch = useSelector(state => state.historySearch)

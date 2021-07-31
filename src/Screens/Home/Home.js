@@ -7,7 +7,7 @@ import Figures from './Figures/Figures.js';
 import SlideShow from './SlideShow';
 import Categories from './Categories/Categories';
 import NetInfo from '@react-native-community/netinfo';
-import NetworkError from '../../Screens/NetworkError';
+import NetworkError from '../NetworkError';
 const axios = require('axios');
 
 import {fetchProducts} from '../../redux/actions/products';

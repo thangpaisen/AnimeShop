@@ -1,15 +1,16 @@
 import React from 'react';
+import { TransitionPresets } from '@react-navigation/stack';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Home from '../components/Home';
-import Cart from '../components/Cart';
+import Home from '../Screens/Home';
+import Cart from '../Screens/Cart';
 import Settings from '../Screens/Settings';
 import SearchProducts from '../Screens/SearchProducts';
 import SearchProductsOK from '../Screens/SearchProductsOK';
 
-import ProductDetails from '../components/ProductDetails';
-import ListProducts from '../components/ListProducts';
+import ProductDetails from '../Screens/ProductDetails';
+import ListProducts from '../Screens/ListProducts';
 
 const Stack = createStackNavigator();
 const AppStack = () => {
@@ -18,12 +19,21 @@ const AppStack = () => {
         initialRouteName="TabMenu"
         screenOptions={{
           headerShown: false,
-        }}>  
+        }}
+        >  
         <Stack.Screen name="TabMenu" component={TabMenu} />
-        <Stack.Screen name="ProductDetails" component={ProductDetails} />
-        <Stack.Screen name="ListProducts" component={ListProducts} />
-        <Stack.Screen name="SearchProducts" component={SearchProducts} />
-        <Stack.Screen name="SearchProductsOK" component={SearchProductsOK} />
+        <Stack.Screen name="ProductDetails" component={ProductDetails} options={{
+        ...TransitionPresets.SlideFromRightIOS,
+      }}/>
+        <Stack.Screen name="ListProducts" component={ListProducts} options={{
+        ...TransitionPresets.SlideFromRightIOS,
+      }}/>
+        <Stack.Screen name="SearchProducts" component={SearchProducts} options={{
+        ...TransitionPresets.SlideFromRightIOS,
+      }}/>
+        <Stack.Screen name="SearchProductsOK" component={SearchProductsOK} options={{
+        ...TransitionPresets.SlideFromRightIOS,
+      }}/>
       </Stack.Navigator>
   );
 };

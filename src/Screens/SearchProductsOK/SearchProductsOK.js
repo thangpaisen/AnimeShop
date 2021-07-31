@@ -1,8 +1,8 @@
 import React,{useState} from 'react';
 import {StyleSheet, Text, View, Pressable,TextInput,ScrollView} from 'react-native';
 import Header from './Header';
-import Product from '../../components/Home/NewProducts/Product';
-import Loading from '../../Screens/Loading';
+import Product from '../Home/NewProducts/Product';
+import Loading from '../Loading';
 
 import {useSelector} from 'react-redux'
 const SearchProductsOK = ({route}) => {

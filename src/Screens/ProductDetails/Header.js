@@ -8,7 +8,6 @@ import {useSelector} from 'react-redux';
 export default function Header({title,heightScroll}) {
   const navigation = useNavigation();
   const dataCart = useSelector(state => state.cart);
-  console.log(heightScroll);
   const showTotalQuantity = dataCart => {
     var total = 0;
     if (dataCart.length > 0) {

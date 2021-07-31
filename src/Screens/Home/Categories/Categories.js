@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CategoryItem from './CategoryItem';
 import {useSelector} from 'react-redux';
-import Loading from '../../../Screens/Loading';
+import Loading from '../../Loading';
 const Categories = () => {
   const dataCategories = useSelector(state => state.categories.data);
   const loading = useSelector(state => state.categories.loading);

@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Product from '../NewProducts/Product';
 import { useNavigation } from '@react-navigation/native';
 import {useSelector } from 'react-redux';
-import Loading from '../../../Screens/Loading';
+import Loading from '../../Loading';
 
 const HotSales = () => {
   const navigation = useNavigation();

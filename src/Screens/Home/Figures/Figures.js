@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import FigureItem from './FigureItem';
 import {useSelector } from 'react-redux';
-import Loading from '../../../Screens/Loading';
+import Loading from '../../Loading';
 
 const Figures = () => {
   const navigation = useNavigation();

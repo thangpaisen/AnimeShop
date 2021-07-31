@@ -6,8 +6,6 @@ import {useSelector} from 'react-redux';
 
 export default function ListProducts({route}) {
   const {title, data} = route.params;
-  console.log(data);
-  console.log(title);
   return (
     <View style={styles.container}>
       <Header title={title} />
