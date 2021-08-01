@@ -12,16 +12,30 @@ import {AuthContext} from '../navigation/AuthProvider';
 import {useDispatch} from 'react-redux';
 import {registerUser} from '../redux/actions/user'
 
+const  validateEmail =(email)=> {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 export default function SignupScreen({navigation}) {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [name, setName] = useState();
-  const [secureTextEntry, setSecureTextEntry] = useState(true)
-
-// dispatch(registerUser(email,password));
-  // const {register} = useContext(AuthContext);
   const dispatch = useDispatch()
+  const [email, setEmail] = useState('');
+  const [errorMessageEmail, setErrorMessageEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessagePassword, setErrorMessagePassword] = useState('');
+  const [name, setName] = useState('');
+  const [errorMessageName, setErrorMessageName] = useState('');
 
+  const [secureTextEntry, setSecureTextEntry] = useState(true)
+  const handleOnPressLogin =() =>{
+        if(name.length<6)
+          setErrorMessageName('Name is a required field')
+        if(!validateEmail(email))
+          setErrorMessageEmail('Email must be a valid email')
+        if(password.length<6)
+          setErrorMessagePassword('Password must be at least 6 characters')
+        if(validateEmail(email) && password.length>=6 && name.length>=6)
+         dispatch(registerUser(name,email,password))
+  }
   return (
     <ImageBackground  style={styles.loginContainer} source={imgBr} resizeMode="cover">
       <StatusBar backgroundColor="transparent" barStyle="light-content" translucent={true} />
@@ -37,13 +51,6 @@ export default function SignupScreen({navigation}) {
             labelStyle={{fontWeight: '500', fontSize: 16}}
             placeholder="Nhập tên vào...."
             leftIcon={<Icon name="person" size={20} color="gray" />}
-            rightIcon={
-              <Icon
-                name="chevron-down-circle-outline"
-                size={20}
-                color="green"
-              />
-            }
             style={{
               fontSize: 16,
               borderWidth: 0,
@@ -51,21 +58,17 @@ export default function SignupScreen({navigation}) {
             }}
             inputContainerStyle={{borderBottomWidth: 0.5}}
             errorStyle={{color: 'red', marginLeft: 0}}
-            errorMessage=''
-            onChangeText={setName}
+            errorMessage={errorMessageName}
+            onChangeText={(text) => {
+              setName(text);
+              setErrorMessageName('');
+            }}
           />
           <Input
             label="Email"
             labelStyle={{fontWeight: '500', fontSize: 16}}
             placeholder="Nhập Email vào...."
             leftIcon={<Icon name="mail" size={20} color="gray" />}
-            rightIcon={
-              <Icon
-                name="chevron-down-circle-outline"
-                size={20}
-                color="green"
-              />
-            }
             style={{
               fontSize: 16,
               borderWidth: 0,
@@ -73,8 +76,11 @@ export default function SignupScreen({navigation}) {
             }}
             inputContainerStyle={{borderBottomWidth: 0.5}}
             errorStyle={{color: 'red', marginLeft: 0}}
-            errorMessage=''
-            onChangeText={setEmail}
+            errorMessage={errorMessageEmail}
+            onChangeText={(text) => {
+              setEmail(text);
+              setErrorMessageEmail('');
+            }}
           />
           <Input
             label="Password"
@@ -93,8 +99,11 @@ export default function SignupScreen({navigation}) {
             }}
             inputContainerStyle={{borderBottomWidth: 0.5}}
             errorStyle={{color: 'red', marginLeft: 0}}
-            errorMessage=''
-            onChangeText={setPassword}
+            errorMessage={errorMessagePassword}
+            onChangeText={(text) => {
+              setPassword(text);
+              setErrorMessagePassword('');
+            }}
           />
           
         </View>
@@ -110,7 +119,7 @@ export default function SignupScreen({navigation}) {
             colors:['#5cfff2', '#09d6c6']
           }}
           onPress={()=>{
-             dispatch(registerUser(email,password))
+             handleOnPressLogin();
             }}
         />
         <View style={styles.signup}>

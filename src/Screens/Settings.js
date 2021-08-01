@@ -8,9 +8,6 @@ import {logout} from '../redux/actions/user'
 import {useDispatch,useSelector} from 'react-redux'
 
 export default function Settings() {
-  // const navigation = useNavigation();
-  // const {user,logout} =useContext(AuthContext);
-  // console.log(user)
   const ItemSettings = ({item})=>(
     <View style={styles.settingItem}>
       <Icon style={styles.iconSetting} name={item.icon} size={20} color='black'/>
@@ -40,8 +37,8 @@ export default function Settings() {
         />
         <View style={styles.profileTitle}>
           {/* <Text style={styles.fullName}>❤ {user.email}</Text> */}
-          <Text style={styles.fullName}>❤ { user? user.email : 'Không tên'}</Text>
-          <Text style={styles.username}>Hello</Text>
+          <Text style={styles.fullName}>❤ { user? user.displayName ===''? user.displayName : 'Không tên' : 'Không tên'}</Text>
+          <Text style={styles.email}> Email: {user?.email}</Text>
         </View>
       </View>
       <View style={styles.optionSettings}>
@@ -94,7 +91,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  username: {
+  email: {
+    marginTop:4,
     color: 'gray',
   },
   optionSettings: {
