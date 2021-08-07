@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Toast from 'react-native-simple-toast';
 var initStateCart =[];
 const cart = (state = initStateCart, action) => {
   var product = action.payload;
@@ -29,6 +30,7 @@ const cart = (state = initStateCart, action) => {
     var index = state.findIndex(x => x.product['_id'] === product['_id'] && x.model === model);
       if(index!==-1){
           state.splice(index,1);
+            Toast.show('Đã xóa sản phẩm');
       }
       AsyncStorage.setItem('CART', JSON.stringify(state))
       return [...state];

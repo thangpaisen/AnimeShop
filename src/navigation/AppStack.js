@@ -11,6 +11,7 @@ import SearchProductsOK from '../Screens/SearchProductsOK';
 
 import ProductDetails from '../Screens/ProductDetails';
 import ListProducts from '../Screens/ListProducts';
+import Payment from "./../Screens/Payment/Payment";
 
 const Stack = createStackNavigator();
 const AppStack = () => {
@@ -32,6 +33,9 @@ const AppStack = () => {
         ...TransitionPresets.SlideFromRightIOS,
       }}/>
         <Stack.Screen name="SearchProductsOK" component={SearchProductsOK} options={{
+        ...TransitionPresets.SlideFromRightIOS,
+      }}/>
+      <Stack.Screen name="Payment" component={Payment} options={{
         ...TransitionPresets.SlideFromRightIOS,
       }}/>
       </Stack.Navigator>

@@ -23,7 +23,7 @@ export default function Settings() {
   ]
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
-  console.log(user)
+  console.log('user',user)
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
@@ -37,7 +37,7 @@ export default function Settings() {
         />
         <View style={styles.profileTitle}>
           {/* <Text style={styles.fullName}>❤ {user.email}</Text> */}
-          <Text style={styles.fullName}>❤ { user? user.displayName ===''? user.displayName : 'Không tên' : 'Không tên'}</Text>
+          <Text style={styles.fullName} numberOfLines={1} ellipsizeMode="tail">❤ {user.displayName || 'Không tên'}</Text>
           <Text style={styles.email}> Email: {user?.email}</Text>
         </View>
       </View>
@@ -47,13 +47,6 @@ export default function Settings() {
           renderItem={({item})=><ItemSettings item={item}/>}
           keyExtractor={(item,index)=>index}
         />
-        {/* <View style={styles.header}>
-            <Text style={styles.headerTitle}>Đơn hàng của tôi</Text>
-            <TouchableOpacity style={styles.seeHistory}>
-                <Text style={styles.textSeeHistory}>Xem lịch sử</Text>
-                <Icon name="chevron-forward-outline" size={18} color='blue'/>
-            </TouchableOpacity>
-        </View> */}
       </View>
       <Button 
         buttonStyle={styles.buttonLogout}

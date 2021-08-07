@@ -4,10 +4,15 @@ import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Button} from 'react-native-elements';
 import {useDispatch, useSelector} from 'react-redux';
+import { useNavigation } from "@react-navigation/native";
 
 export default function PayNow() {
+    const navigation = useNavigation();
   const dispatch = useDispatch();
   const dataCart = useSelector(state => state.cart);
+  const handleOnPayNow =() => {
+      navigation.navigate('Payment')
+  }
   const showTotalPrice = (dataCart) =>{
       var total= 0;
       if(dataCart.length >0)
@@ -41,6 +46,7 @@ export default function PayNow() {
         </View>
       </View>
       <Button
+        onPress={() =>handleOnPayNow()}
         buttonStyle={styles.buttonPay}
         titleStyle={styles.buttonPayTitle}
         title={'Tiến hàng đặt hàng'}
