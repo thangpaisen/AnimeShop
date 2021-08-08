@@ -27,12 +27,17 @@ const ListProducts = () => {
     <View style={styles.container}>
       <Header hideProducts={hideProducts} handleHideProducts={handleHideProducts}/>
       <View style={[styles.listProducts,hideProducts?styles.hideProducts:null]}>
-        <FlatList
+        {/* <FlatList
           showsVerticalScrollIndicator={false}
           data={dataCart}
           renderItem={({item, index}) => <ProductItemP item={item} />}
           keyExtractor={(item, index) => index}
-        />
+        /> */}
+        {
+            dataCart.map((item, index) =>
+                <ProductItemP item={item}  key={index}/>
+            )
+        }
         <View style={styles.priceD}>
             <View style={{flexDirection: 'row',justifyContent:'space-between'}}>
                 <Text style={{ color: '#666'}}>Tạm tính</Text>
@@ -70,7 +75,8 @@ const styles = StyleSheet.create({
 
   },
   hideProducts: {
-    width: 0, height: 0
+    width: 0, height: 0,
+    transform: [{ scale: 0 }]
   },
   priceD:{
       marginTop:10,
