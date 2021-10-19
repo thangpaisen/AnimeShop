@@ -27,12 +27,6 @@ const ListProducts = () => {
     <View style={styles.container}>
       <Header hideProducts={hideProducts} handleHideProducts={handleHideProducts}/>
       <View style={[styles.listProducts,hideProducts?styles.hideProducts:null]}>
-        {/* <FlatList
-          showsVerticalScrollIndicator={false}
-          data={dataCart}
-          renderItem={({item, index}) => <ProductItemP item={item} />}
-          keyExtractor={(item, index) => index}
-        /> */}
         {
             dataCart.map((item, index) =>
                 <ProductItemP item={item}  key={index}/>

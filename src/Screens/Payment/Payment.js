@@ -10,7 +10,7 @@ const Payment = () => {
             <Header/>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <ListProducts/>
-            <ShipmentDetails/>
+                <ShipmentDetails/>
             </ScrollView>
         </View>
     )

@@ -13,9 +13,9 @@ const ShipmentDetails = () => {
   const handleOnPayNow = () => {
     console.log('ok');
     if(info.name.trim().length<1)
-       setMessageErrorName('Vui lòng nhập họ tên')
+       setMessageErrorName('Vui lòng nhập Họ Tên')
         if(info.sdt.trim().length<1)
-       setMessageErrorSdt('Vui lòng nhập sdt')
+       setMessageErrorSdt('Vui lòng nhập Số điện thoại')
        if(info.address.trim().length<1)
        setMessageErrorAddress('Vui lòng nhập địa chỉ') 
   };
@@ -27,10 +27,13 @@ const ShipmentDetails = () => {
         placeholder="Họ và tên"
         value={info.name}
         onChangeText={text =>
-          setInfo({
+          {
+              setInfo({
             ...info,
             name: text,
           })
+          setMessageErrorName('')
+          }
         }
       />
       <Text style={styles.messageError}>{messageErrorName}</Text>
@@ -39,10 +42,13 @@ const ShipmentDetails = () => {
         placeholder="Số điện thoại "
         value={info.sdt}
         onChangeText={text =>
-          setInfo({
+          {
+              setInfo({
             ...info,
             sdt: text,
           })
+          setMessageErrorSdt('')
+          }
         }
       />
       <Text style={styles.messageError}>{messageErrorSdt}</Text>
@@ -51,10 +57,13 @@ const ShipmentDetails = () => {
         placeholder="Địa chỉ"
         value={info.address}
         onChangeText={text =>
-          setInfo({
+          {
+              setInfo({
             ...info,
             address: text,
           })
+          setMessageErrorAddress('Vui lòng nhập địa chỉ')
+          } 
         }
       />
       <Text style={styles.messageError}>{messageErrorAddress}</Text>
@@ -90,11 +99,13 @@ const styles = StyleSheet.create({
     borderColor: '#888',
   },
   buttonPay: {
+    marginBottom:10,
     marginTop: 20,
     borderRadius: 10,
     backgroundColor: '#09bff2',
   },
   buttonPayTitle: {
+
     fontSize: 16,
   },
   messageError: {
